@@ -2,7 +2,16 @@ plugins {
     id("java")
     id("application")
     id ("checkstyle")
+    id("org.sonarqube") version "6.2.0.5505"
 }
+
+//sonar {
+//    properties {
+//        property("sonar.projectKey", "TelAndr_java-project-71")
+//        property("sonar.organization", "telandr1987")
+//        property("sonar.host.url", "https://sonarcloud.io")
+//    }
+//}
 
 group = "hexlet.code"
 version = "1.0-SNAPSHOT"
