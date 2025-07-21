@@ -1,0 +1,26 @@
+users:
+  - name: "John Doe"
+    age: 30
+    email: "johndoe@example.com"
+    address:
+      street: "123 Elm St"
+      city: "Somewhere"
+      zip: "12345"
+  - name: "Jane Smith"
+    age: 25
+    email: "janesmith@example.com"
+    address:
+      street: "456 Oak St"
+      city: "Anywhere"
+      zip: "67890"
+company:
+  name: "Example Corp"
+  location: 
+    country: "USA"
+    state: "CA"
+    city: "San Francisco"
+  departments:
+    - name: "Engineering"
+      head: "Alice Johnson"
+    - name: "Marketing"
+      head: "Bob Brown"
