@@ -30,11 +30,4 @@ public class FileComparer {
             return objYaml.load(inpStream);
         }
     }
-    public static void main(String[] args) throws IOException {
-        Path filePath1 = Path.of("path/to/firstFile.yaml");
-        Path filePath2 = Path.of("path/to/secondFile.yaml");
-
-        String strDifferences = compareFiles(filePath1, filePath2, null);
-        System.out.println(strDifferences);
-    }
 }

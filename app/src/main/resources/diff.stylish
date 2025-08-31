@@ -1,0 +1,4 @@
+  - key2: value2
+  + key2: modifiedValue2
+  - nestedKey2: nestedValue2
+  + key4: value4

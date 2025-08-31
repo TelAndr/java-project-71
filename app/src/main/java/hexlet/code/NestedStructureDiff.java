@@ -60,17 +60,4 @@ public class NestedStructureDiff {
             return yaml.load(inputStream);
         }
     }
-    public static void main(String[] args) throws Exception {
-        Map<String, Object> mapYaml1 = loadYaml("path/to/firstFile.yaml");
-        Map<String, Object> mapYaml2 = loadYaml("path/to/secondFile.yaml");
-
-        Map<String, String> mapDifferences = new HashMap<>();
-        compareStructures(mapYaml1, mapYaml2, mapDifferences, "");
-
-        if (mapDifferences.isEmpty()) {
-            System.out.println("No differences found. The structures are identical.");
-        } else {
-            mapDifferences.forEach((key, diff) -> System.out.println("Difference at '" + key + "': " + diff));
-        }
-    }
 }

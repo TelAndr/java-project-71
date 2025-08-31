@@ -4,18 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 public class YamlDiff {
-    //public static Map<String, Object> loadYaml(String filePath) throws Exception {
-    //    Yaml yaml = new Yaml();
-    //    try (InputStream inputStream = hexlet.code.YamlDiff.class.getClassLoader().getResourceAsStream(filePath)) {
-    //        return yaml.load(inputStream);
-    //    }
-    //}
     private final Parser parser;
 
     public YamlDiff() {
         this.parser = new Parser();
     }
-    //public static void compareYamlFiles(Map<String, Object> yaml1, Map<String, Object> yaml2) {
     public void compareYamlFiles(String filePath1, String filePath2) throws Exception {
         Map<String, Object> mapFromYamlFile1 = parser.parseYaml(filePath1);
         Map<String, Object> mapFromYamlFile2 = parser.parseYaml(filePath2);
@@ -50,13 +43,5 @@ public class YamlDiff {
                 System.out.println("Difference in key '" + key + "': " + diff);
             });
         }
-    }
-    public static void main(String[] args) throws Exception {
-        //Map<String, Object> yaml1 = loadYaml("path/to/firstFile.yaml");
-        //Map<String, Object> yaml2 = loadYaml("path/to/secondFile.yaml");
-        YamlDiff yamlDiff = new YamlDiff();
-        yamlDiff.compareYamlFiles("path/to/firstFile.yaml", "path/to/secondFile.yaml");
-
-        //compareYamlFiles(yaml1, yaml2);
     }
 }

@@ -4,13 +4,12 @@ import java.util.Map;
 import hexlet.code.formatters.StylishFormatter;
 import hexlet.code.formatters.PlainFormatter;
 public class Formatter {
-    public String format(Map<String, Object> file1Data, Map<String, Object> file2Data) {
+    public String format(Map<String, Status> resultDiffMap) {
         return "default string";
     }
 
-    //String format(Map<String, Object> before, Map<String, Object> after);
     public interface Format {
-        String format(Map<String, Object> before, Map<String, Object> after);
+        String format(Map<String, Status> resultDiffMap);
     }
     public static Format getFormatter(String formatName) {
         switch (formatName.toLowerCase()) {

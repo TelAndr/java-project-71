@@ -22,9 +22,4 @@ class FileProcessing implements Runnable {
             System.out.println("One or both files do not exist.");
         }
     }
-
-    public static void main(String[] args) {
-        int exitCode = new CommandLine(new FileProcessing()).execute(args);
-        System.exit(exitCode);
-    }
 }

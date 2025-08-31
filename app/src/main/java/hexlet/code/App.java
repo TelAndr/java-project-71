@@ -20,39 +20,52 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.HashMap;
 import java.util.Map;
 
-public class App {
-    public static void saveProxy(Path filePath, DataHostProxy instance) throws Exception {
-        String jsonRepresentation = instance.serialize();
-        Files.writeString(filePath, jsonRepresentation, StandardOpenOption.WRITE);
-    }
+//public class App {
+public final class App implements Callable<Integer> {
+    //filePath1, filePath2 ...
+    Path filePath1 = Path.of("path/to/firstFile.json");
+    Path filePath2 = Path.of("path/to/secondFile.json");
+    String strFilePath1 = filePath1.toString();
+    String strFilePath2 = filePath2.toString();
+    String formatName = "plain";
 
-    public static DataHostProxy extractProxy(Path filePath) throws Exception {
-        String jsonRepresentation = Files.readString(filePath);
-        DataHostProxy instance = DataHostProxy.unserialize(jsonRepresentation);
-        return instance;
-    }
+    @Override
+    public Integer call() {
 
-    public static void saveVerbose(Path filePath, DataHostVerbose instance) throws Exception {
-        String jsonRepresentation = instance.serialize();
-        Files.writeString(filePath, jsonRepresentation, StandardOpenOption.WRITE);
-    }
+        try {
+            String formattedDiff = Differ.generate(strFilePath1, strFilePath2, formatName);
+            System.out.println(formattedDiff);
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+            return 1;
+        }
 
-    public static DataHostVerbose extractVerbose(Path filePath) throws Exception {
-        String jsonRepresentation = Files.readString(filePath);
-        DataHostVerbose instance = DataHostVerbose.unserialize(jsonRepresentation);
-        return instance;
+        return 0;
     }
+    //public static void saveProxy(Path filePath, DataHostProxy instance) throws Exception {
+    //    String jsonRepresentation = instance.serialize();
+    //    Files.writeString(filePath, jsonRepresentation, StandardOpenOption.WRITE);
+    //}
+
+    //public static DataHostProxy extractProxy(Path filePath) throws Exception {
+    //    String jsonRepresentation = Files.readString(filePath);
+    //    DataHostProxy instance = DataHostProxy.unserialize(jsonRepresentation);
+    //    return instance;
+    //}
+
+    //public static void saveVerbose(Path filePath, DataHostVerbose instance) throws Exception {
+    //    String jsonRepresentation = instance.serialize();
+    //    Files.writeString(filePath, jsonRepresentation, StandardOpenOption.WRITE);
+    //}
+
+    //public static DataHostVerbose extractVerbose(Path filePath) throws Exception {
+    //    String jsonRepresentation = Files.readString(filePath);
+    //    DataHostVerbose instance = DataHostVerbose.unserialize(jsonRepresentation);
+    //    return instance;
+    //}
     public static void main(String[] args) throws Exception {
             System.out.printf("Hello World!");
-            DataHostProxy dhp = new DataHostProxy("hexlet.io", 50, "123.234.53.22", false);
-            DataHostVerbose dhv = new DataHostVerbose(20, true, "hexlet.io");
             Path pathFile1 = Paths.get("file1.json");
             Path pathFile2 = Paths.get("file2.json");
-            saveProxy(pathFile1, dhp);
-            saveVerbose(pathFile2, dhv);
-            extractProxy(pathFile1);
-            extractProxy(pathFile2);
-            int exitCode = new CommandLine(new CheckSum()).execute(args);
-            System.exit(exitCode);
     }
 }
