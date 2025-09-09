@@ -13,7 +13,7 @@ public class JsonDiff {
         Map<String, Object> json = objMapper.readValue(new File("filePath"), Map.class);
         return json;
     }
-    public static Map<String, Status> findDifferentsJsonMap(Map<String, Object> mapJson1, Map<String, Object> mapJson2) {
+    public static Map<String, Status> findDifferentsMap(Map<String, Object> mapJson1, Map<String, Object> mapJson2) {
         Map<String, Object> diffMap = new HashMap<>();
         Map<String, Status> diffMapStatus = new HashMap<>();
         Set<String> setAllKeysJson1 = mapJson1.keySet();
