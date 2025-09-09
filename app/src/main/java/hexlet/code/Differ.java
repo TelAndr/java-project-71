@@ -2,10 +2,9 @@ package hexlet.code;
 import hexlet.code.formatters.PlainFormatter;
 import hexlet.code.formatters.StylishFormatter;
 
-import java.util.HashMap;
 import java.util.Map;
 
-import static hexlet.code.JsonDiff.findDifferentsJsonMap;
+import static hexlet.code.JsonDiff.findDifferentsMap;
 
 public class Differ {
     public static String determineFileType(String filePath) {
@@ -18,21 +17,16 @@ public class Differ {
         }
     }
     public static String generate(String filePath1, String filePath2, String formatName) throws Exception {
+        // 1. Чтение файлов и определение формата
+        String strFileType1 = determineFileType(filePath1);
+        String strFileType2 = determineFileType(filePath2);
+        // 2. Парсинг данных
+        Map<String, Object> mapFile1Data = Parser.parseJsonOrYamlFile(strFileType1, filePath1);
+        Map<String, Object> mapFile2Data = Parser.parseJsonOrYamlFile(strFileType2, filePath2);
+        // 3. Построение разницы
+        Map<String, Status> resultDiffMap = findDifferentsMap(mapFile1Data, mapFile2Data);
+        // 4. Форматирование данных
         Formatter.Format formatter = getFormatter(formatName);
-        String strFileType = determineFileType(filePath1);
-        Map<String, Object> file1Data = new HashMap<>();
-        Map<String, Object> file2Data = new HashMap<>();
-        switch (strFileType) {
-            case "json":
-                file1Data = JsonDiff.parseJson(filePath1);
-                file2Data = JsonDiff.parseJson(filePath2);
-                break;
-            case "yaml":
-                file1Data = loadYaml(filePath1);
-                file2Data = loadYaml(filePath2);
-        }
-
-        Map<String, Status> resultDiffMap = findDifferentsJsonMap(file1Data, file2Data);
         return formatter.format(resultDiffMap);
     }
     private static Formatter.Format getFormatter(String formatName) {
@@ -44,7 +38,7 @@ public class Differ {
                 return new StylishFormatter();
         }
     }
-    private static Map<String, Object> loadYaml(String filePath) throws Exception {
+    public static Map<String, Object> loadYaml(String filePath) throws Exception {
         Parser parsObj = new Parser();
         return parsObj.parseYaml(filePath);
     }
