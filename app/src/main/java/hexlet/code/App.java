@@ -23,8 +23,10 @@ import java.util.Map;
 //public class App {
 public final class App implements Callable<Integer> {
     //filePath1, filePath2 ...
-    Path filePath1 = Path.of("path/to/firstFile.json");
-    Path filePath2 = Path.of("path/to/secondFile.json");
+    //@Option
+    //@Parameters
+    Path filePath1 = Path.of("src/main/resources/file1.json");
+    Path filePath2 = Path.of("src/main/resources/file2.json");
     String strFilePath1 = filePath1.toString();
     String strFilePath2 = filePath2.toString();
     String formatName = "plain";
