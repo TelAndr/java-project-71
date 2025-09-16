@@ -1,4 +1,5 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
+import hexlet.code.Status;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.yaml.snakeyaml.Yaml;
@@ -9,7 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
 
-import static hexlet.code.JsonDiff.findDifferentsJsonMap;
+import static hexlet.code.JsonDiff.findDifferentsMap;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 public class YamlDrivenTest {
     static class TestCase {
@@ -40,7 +41,7 @@ public class YamlDrivenTest {
         ObjectMapper objMapper = new ObjectMapper();
         Map<String, Object> json1 = objMapper.readValue(new File("file1"), Map.class);
         Map<String, Object> json2 = objMapper.readValue(new File("file2"), Map.class);
-        Map<String, Object> resultDiffMap = findDifferentsJsonMap(json1, json2);
+        Map<String, Status> resultDiffMap = findDifferentsMap(json1, json2);
         return (resultDiffMap.isEmpty()) ? "identical" : "not identical";
     }
 }
