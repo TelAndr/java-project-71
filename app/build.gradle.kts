@@ -19,7 +19,7 @@ sonarqube {
     properties {
         property ("sonar.projectKey", "TelAndr_java-project-71")
         property ("sonar.host.url", "https://sonarcloud.io")
-        property ("sonar.login", "${System.getenv('SONAR_TOKEN')}") // Используйте переменную окружения для вашего токена
+        property ("sonar.login", "${System.getenv("SONAR_TOKEN")}") // Используйте переменную окружения для вашего токена
         property ("sonar.coverage.jacoco.xmlReportPaths", file("build/reports/jacoco/test/jacocoTestReport.xml"))
     }
 }
@@ -52,8 +52,10 @@ dependencies {
     //testImplementation("org.junit.jupiter:junit-jupiter")
     implementation ("info.picocli:picocli:4.7.7")
     implementation ("com.fasterxml.jackson.core:jackson-databind:2.13.1")
+    implementation ("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.12.3")
     testImplementation ("org.junit.jupiter:junit-jupiter:5.13.1")
-    implementation(kotlin("stdlib-jdk8"))
+    //implementation(kotlin("stdlib-jdk8"))
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.5.31")
 }
 
 tasks.test {
