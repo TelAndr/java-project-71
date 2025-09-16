@@ -15,7 +15,11 @@ public class JsonFormatter implements Format {
     //public String format(Map<String, Object> mapBefore, Map<String, Object> mapAfter) {
     public String format(Map<String, Status > resultDiffMap) {
         ObjectMapper mapper = new ObjectMapper();
-        return mapper.writeValueAsString(resultDiffMap);
+        try {
+            return mapper.writeValueAsString(resultDiffMap);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException("Error while converting to JSON", e);
+        }
     }
     private String convertToJson(Map<String, Object> data) {
         ObjectMapper objMapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
