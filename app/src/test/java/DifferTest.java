@@ -1,3 +1,4 @@
+import com.fasterxml.jackson.databind.ObjectMapper;
 import hexlet.code.Differ;
 import org.junit.jupiter.api.Test;
 
@@ -7,6 +8,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
+import static org.testng.Assert.assertEquals;
 
 public class DifferTest {
     private String convertJsonToString(String strPath) {
