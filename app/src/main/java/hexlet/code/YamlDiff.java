@@ -10,8 +10,8 @@ public class YamlDiff {
         this.parser = new Parser();
     }
     public void compareYamlFiles(String filePath1, String filePath2) throws Exception {
-        Map<String, Object> mapFromYamlFile1 = parser.parseYaml(filePath1);
-        Map<String, Object> mapFromYamlFile2 = parser.parseYaml(filePath2);
+        Map<String, Object> mapFromYamlFile1 = Parser.parse(filePath1, "yaml"); //parser.parseYaml(filePath1);
+        Map<String, Object> mapFromYamlFile2 = Parser.parse(filePath2, "yaml"); //parser.parseYaml(filePath2);
         Set<String> keys = mapFromYamlFile1.keySet();
         Map<String, String> differences = new HashMap<>();
 
