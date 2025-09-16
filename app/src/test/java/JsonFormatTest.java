@@ -1,10 +1,13 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
+import hexlet.code.Status;
 import hexlet.code.formatters.JsonFormatter;
 import hexlet.code.Formatter;
 import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.util.Map;
 import org.junit.jupiter.api.Test;
+
+import static hexlet.code.JsonDiff.findDifferentsMap;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 public class JsonFormatTest {
@@ -31,8 +34,8 @@ public class JsonFormatTest {
     public void testIdenticalJsonObjects() {
         Map<String, Object> mapJson1 = Map.of("key1", "value1", "key2", "value2");
         Map<String, Object> mapJson2 = Map.of("key1", "value1", "key2", "value2");
-
-        String strResult = formatter.format(mapJson1, mapJson2);
+        Map<String, Status> resultDiffMap = findDifferentsMap(mapJson1, mapJson2);
+        String strResult = formatter.format(resultDiffMap);
         assertEquals("{}", strResult, "No difference should be found between identical JSON objects");
     }
     @Test
@@ -41,7 +44,8 @@ public class JsonFormatTest {
         Map<String, Object> mapJson2 = Map.of("key2", "value2");
 
         String strExpected = "{ \"key1\": \"removed\", \"key2\": \"added\" }"; // Example structure
-        String strResult = formatter.format(mapJson1, mapJson2);
+        Map<String, Status> resultDiffMap = findDifferentsMap(mapJson1, mapJson2);
+        String strResult = formatter.format(resultDiffMap);
         assertEquals(strExpected, strResult);
     }
     @Test
@@ -50,7 +54,8 @@ public class JsonFormatTest {
         Map<String, Object> mapJson2 = Map.of("key1", "newValue");
 
         String strExpected = "{ \"key1\": \"from value1 to newValue\" }"; // Example structure
-        String strResult = formatter.format(mapJson1, mapJson2);
+        Map<String, Status> resultDiffMap = findDifferentsMap(mapJson1, mapJson2);
+        String strResult = formatter.format(resultDiffMap);
         assertEquals(strExpected, strResult);
     }
     @Test
@@ -59,7 +64,8 @@ public class JsonFormatTest {
         Map<String, Object> mapJson2 = Map.of("key1", Map.of("subkey", "value2"), "key2", "value2");
 
         String strExpected = "{ \"key1.subkey\": \"from value1 to value2\" }"; // Example structure
-        String strResult = formatter.format(mapJson1, mapJson2);
+        Map<String, Status> resultDiffMap = findDifferentsMap(mapJson1, mapJson2);
+        String strResult = formatter.format(resultDiffMap);
         assertEquals(strExpected, strResult);
     }
 }
