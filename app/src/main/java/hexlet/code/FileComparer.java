@@ -7,9 +7,13 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Map;
+
+import static hexlet.code.JsonDiff.findDifferentsMap;
+
 public class FileComparer {
     public interface Formatter {
-        String format(Map<String, Object> mapBefore, Map<String, Object> mapAfter);
+        //String format(Map<String, Object> mapBefore, Map<String, Object> mapAfter);
+        String format(Map<String, Status> resultDiffMap);
     }
 
     public static String compareFiles(Path filePath1, Path filePath2, Formatter inputFormatter) throws IOException {
@@ -20,8 +24,8 @@ public class FileComparer {
         if (inputFormatter == null) {
             inputFormatter = new StylishFormatter()::format;
         }
-
-        return inputFormatter.format(mapFromYamlFile1, mapFromYamlFile2);
+        Map<String, Status> resultDiffMap = findDifferentsMap(mapFromYamlFile1, mapFromYamlFile2);
+        return inputFormatter.format(resultDiffMap);
     }
     private static Map<String, Object> loadYaml(Path filePath) throws IOException {
         // Метод для загрузки файлов YAML в Map
