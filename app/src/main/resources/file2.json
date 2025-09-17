@@ -3,6 +3,6 @@
 	"key2": "modifiedValue2",
 	"key3": {
 		"nestedKey1": "nestedValue1"
-	}
+	},
 	"key4": "value4"
 }
