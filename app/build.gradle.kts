@@ -65,6 +65,7 @@ tasks.test {
 checkstyle {
     toolVersion = "8.45.1" // укажите актуальную версию
     configDirectory.set(file("$rootDir/config/checkstyle"))
+    configFile = file("config/checkstyle/checkstyle.xml")
 }
 //val compileKotlin: KotlinCompile by tasks
 //compileKotlin.kotlinOptions {
