@@ -21,6 +21,12 @@ public class YamlNestedStructuresTest {
             return obj1.equals(obj2);
         }
     }
+    /**
+     * Преобразует файл типа yaml в Map<String, Object>.
+     *
+     * @param filePath патч файла, который нужно выбрать для преобразования.
+     * @return Map<String, Object>.
+     */
     public Map<String, Object> loadYaml(String filePath) throws Exception {
         Yaml yaml = new Yaml();
         try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream(filePath)) {
