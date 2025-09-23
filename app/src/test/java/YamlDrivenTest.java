@@ -14,10 +14,10 @@ import static hexlet.code.JsonDiff.findDifferentsMap;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 public class YamlDrivenTest {
     static class TestCase {
-        public String description;
-        public String inputFile1;
-        public String inputFile2;
-        public String expectedResult;
+        private String description;
+        private String inputFile1;
+        private String inputFile2;
+        private String expectedResult;
     }
     private TestCase loadTestCase(String yamlFilePath) throws Exception {
         Yaml yaml = new Yaml(new Constructor(TestCase.class));
