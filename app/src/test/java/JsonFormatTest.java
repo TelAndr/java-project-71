@@ -1,15 +1,9 @@
-import com.fasterxml.jackson.databind.ObjectMapper;
 import hexlet.code.Status;
 import hexlet.code.formatters.JsonFormatter;
-import hexlet.code.Formatter;
 import org.junit.jupiter.api.Test;
-import java.io.File;
 import java.util.Map;
-import org.junit.jupiter.api.Test;
-
 import static hexlet.code.JsonDiff.findDifferentsMap;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 public class JsonFormatTest {
     private final JsonFormatter formatter = new JsonFormatter();
     //private boolean areJsonValuesIdentical(Map<String, Object> json1, Map<String, Object> json2, String key) {
