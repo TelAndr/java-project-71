@@ -1,8 +1,5 @@
 package hexlet.code.formatters;
 import java.util.Map;
-import java.util.HashMap;
-import java.util.Set;
-import java.util.TreeSet;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -11,9 +8,15 @@ import hexlet.code.Formatter.Format;
 import hexlet.code.Status;
 
 public class JsonFormatter implements Format {
+    /**
+     * Форматирует различия между двумя json структурами данных.
+     *
+     * @param resultDiffMap карта различий, которую нужно отформатировать.
+     * @return отформатированная строка.
+     */
     @Override
     //public String format(Map<String, Object> mapBefore, Map<String, Object> mapAfter) {
-    public String format(Map<String, Status > resultDiffMap) {
+    public String format(Map<String, Status> resultDiffMap) {
         ObjectMapper mapper = new ObjectMapper();
         try {
             return mapper.writeValueAsString(resultDiffMap);
