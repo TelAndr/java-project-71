@@ -11,7 +11,8 @@ public class JsonDifferenceTest {
         Map<String, String> mapDifferences = new HashMap<>();
         for (String key : mapJson1.keySet()) {
             if (mapJson2.containsKey(key) && !mapJson1.get(key).equals(mapJson2.get(key))) {
-                mapDifferences.put(key, "Value in json1: " + mapJson1.get(key) + ", Value in json2: " + mapJson2.get(key));
+                mapDifferences.put(key, "Value in json1: " + mapJson1.get(key)
+                        + ", Value in json2: " + mapJson2.get(key));
             }
         }
         return mapDifferences;
@@ -26,6 +27,7 @@ public class JsonDifferenceTest {
         // Пример проверки, если различия известны
         assertEquals(1, mapDifferences.size(), "Ожидалось одно различие");
         assertTrue(mapDifferences.containsKey("ключСРазличием"), "Ожидалось отличие для `ключСРазличием`");
-        assertEquals("Value in json1: 123, Value in json2: 456", mapDifferences.get("ключСРазличием"), "Значения должны отличаться");
+        assertEquals("Value in json1: 123, Value in json2: 456",
+                mapDifferences.get("ключСРазличием"), "Значения должны отличаться");
     }
 }
