@@ -39,7 +39,8 @@ public class JsonDiff {
             }
         }
 
-        //setAllKeysJson1.stream().filter(curKeyMap -> (!mapJson2.containsKey(curKeyMap) || !mapJson1.get(curKeyMap).equals(mapJson2.get(curKeyMap))) ).
+        //setAllKeysJson1.stream().filter(curKeyMap -> (!mapJson2.containsKey(curKeyMap) ||
+        // !mapJson1.get(curKeyMap).equals(mapJson2.get(curKeyMap))) ).
         //        map(curKeyMap -> diffMap.put(curKeyMap, mapJson1.get(curKeyMap)));
         for (String curKeyMap : mapJson2.keySet()) {
             if (!mapJson1.containsKey(curKeyMap)) {
