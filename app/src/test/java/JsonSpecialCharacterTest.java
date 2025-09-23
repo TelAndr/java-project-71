@@ -1,7 +1,6 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import java.io.File;
-import java.nio.charset.StandardCharsets;
 import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 public class JsonSpecialCharacterTest {
