@@ -29,6 +29,7 @@ public class JsonMissingKeysTest {
         // Пример проверки, если различия известны
         assertEquals(1, mapDifferences.size(), "Ожидалось одно различие");
         assertTrue(mapDifferences.containsKey("ключСРазличием"), "Ожидалось отличие для `ключСРазличием`");
-        assertEquals("Value in json1: 123, Value in json2: 456", mapDifferences.get("ключСРазличием"), "Значения должны отличаться");
+        assertEquals("Value in json1: 123, Value in json2: 456",
+                mapDifferences.get("ключСРазличием"), "Значения должны отличаться");
     }
 }
