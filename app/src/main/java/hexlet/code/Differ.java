@@ -1,9 +1,6 @@
 package hexlet.code;
-import hexlet.code.formatters.PlainFormatter;
-import hexlet.code.formatters.StylishFormatter;
 
 import java.util.Map;
-
 import static hexlet.code.Formatter.getFormatter;
 import static hexlet.code.JsonDiff.findDifferentsMap;
 
@@ -30,8 +27,8 @@ public class Differ {
         String strFileType1 = getDataFormat(filePath1); //determineFileType(filePath1);
         String strFileType2 = getDataFormat(filePath2); //determineFileType(filePath2);
         // 2. Парсинг данных
-        Map<String, Object> mapFile1Data = Parser.parse(filePath1, strFileType1); //Parser.parseJsonOrYamlFile(strFileType1, filePath1);
-        Map<String, Object> mapFile2Data = Parser.parse(filePath2, strFileType2); //Parser.parseJsonOrYamlFile(strFileType2, filePath2);
+        Map<String, Object> mapFile1Data = Parser.parse(filePath1, strFileType1);
+        Map<String, Object> mapFile2Data = Parser.parse(filePath2, strFileType2);
         // 3. Построение разницы
         Map<String, Status> resultDiffMap = findDifferentsMap(mapFile1Data, mapFile2Data);
         // 4. Форматирование данных
