@@ -2,28 +2,24 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
-
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.testng.Assert.assertTrue;
 
 public class JsonKeyOrderTest {
     private boolean findKeysOrder(Map<String, Object> mapJson1, Map<String, Object> mapJson2) {
         //Set<String> extraKeys = new HashSet<>();
         int countEquals = 0;
-        ArrayList<String> Json1OrderedKeys = new ArrayList<>();
-        ArrayList<String> Json2OrderedKeys = new ArrayList<>();
+        ArrayList<String> json1OrderedKeys = new ArrayList<>();
+        ArrayList<String> json2OrderedKeys = new ArrayList<>();
         for (String key : mapJson1.keySet()) {
-            Json1OrderedKeys.add(key);
+            json1OrderedKeys.add(key);
         }
         for (String key : mapJson2.keySet()) {
-            Json2OrderedKeys.add(key);
+            json2OrderedKeys.add(key);
         }
-        int sizeOrderedKeys = Json1OrderedKeys.size();
+        int sizeOrderedKeys = json1OrderedKeys.size();
         for (int indArr = 0; indArr < sizeOrderedKeys; ++indArr) {
-            if (Json1OrderedKeys.get(indArr).equals(Json2OrderedKeys.get(indArr))) {
+            if (json1OrderedKeys.get(indArr).equals(json2OrderedKeys.get(indArr))) {
                 countEquals++;
             } else {
                 return false;
@@ -42,6 +38,7 @@ public class JsonKeyOrderTest {
         Map<String, Object> mapJson1 = objMapper.readValue(new File("path/to/file1.json"), Map.class);
         Map<String, Object> mapJson2 = objMapper.readValue(new File("path/to/file2.json"), Map.class);
 
-        assertTrue(areJsonFilesEquivalent(mapJson1, mapJson2), "JSON файлы должны быть эквивалентны вне зависимости от порядка ключей");
+        assertTrue(areJsonFilesEquivalent(mapJson1, mapJson2),
+                "JSON файлы должны быть эквивалентны вне зависимости от порядка ключей");
     }
 }
