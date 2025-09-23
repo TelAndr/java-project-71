@@ -9,6 +9,12 @@ public class YamlDiff {
     public YamlDiff() {
         this.parser = new Parser();
     }
+    /**
+     * Форматирует различия между двумя файлами типа yaml.
+     *
+     * @param filePath1 имя 1-го файла типа jaml для сравнения.
+     * @param filePath2 гмя 2-го файла типа jaml для сравнения.
+     */
     public void compareYamlFiles(String filePath1, String filePath2) throws Exception {
         Map<String, Object> mapFromYamlFile1 = Parser.parse(filePath1, "yaml"); //parser.parseYaml(filePath1);
         Map<String, Object> mapFromYamlFile2 = Parser.parse(filePath2, "yaml"); //parser.parseYaml(filePath2);
