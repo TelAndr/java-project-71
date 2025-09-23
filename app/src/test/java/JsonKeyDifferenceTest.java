@@ -30,9 +30,11 @@ public class JsonKeyDifferenceTest {
 
         // Проверка наличия ожидаемых дополнительных ключей
         assertEquals(1, extraKeysInJson1.size(), "Ожидался один дополнительный ключ в первом JSON");
-        assertTrue(extraKeysInJson1.contains("дополнительныйКлюч1"), "Ожидался дополнительный ключ: `дополнительныйКлюч1`");
+        assertTrue(extraKeysInJson1.contains("дополнительныйКлюч1"),
+                "Ожидался дополнительный ключ: `дополнительныйКлюч1`");
 
         assertEquals(1, extraKeysInJson2.size(), "Ожидался один дополнительный ключ во втором JSON");
-        assertTrue(extraKeysInJson2.contains("дополнительныйКлюч2"), "Ожидался дополнительный ключ: `дополнительныйКлюч2`");
+        assertTrue(extraKeysInJson2.contains("дополнительныйКлюч2"),
+                "Ожидался дополнительный ключ: `дополнительныйКлюч2`");
     }
 }
