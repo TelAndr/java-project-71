@@ -1,12 +1,9 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
 import hexlet.code.Differ;
 import org.junit.jupiter.api.Test;
-
-import javax.annotation.processing.SupportedAnnotationTypes;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import static org.testng.Assert.assertEquals;
@@ -27,7 +24,7 @@ public class DifferTest {
     private String convertPlainToString(String strPath) {
         String plainString = new String();
         try {
-             plainString = Files.readString(Paths.get(strPath));
+            plainString = Files.readString(Paths.get(strPath));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -36,7 +33,7 @@ public class DifferTest {
     private String convertStylishToString(String strPath) {
         String stylishString = new String();
         try {
-            stylishString = Files.readString(Paths.get(strPath) , java.nio.charset.StandardCharsets.UTF_8);
+            stylishString = Files.readString(Paths.get(strPath), java.nio.charset.StandardCharsets.UTF_8);
         } catch (IOException e) {
             e.printStackTrace();
         }
