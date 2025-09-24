@@ -35,7 +35,9 @@ public class Differ {
         Formatter.Format formatter = getFormatter(formatName);
         return formatter.format(resultDiffMap);
     }
-
+    public static String generate(String filePath1, String filePath2) throws Exception {
+        return generate(filePath1, filePath2, "stylish");
+    }
     public static Map<String, Object> loadYaml(String filePath) throws Exception {
         //Parser parsObj = new Parser();
         return Parser.parse(filePath, "yaml"); //parsObj.parseYaml(filePath);
