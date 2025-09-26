@@ -54,6 +54,7 @@ dependencies {
     implementation ("com.fasterxml.jackson.core:jackson-databind:2.13.1")
     implementation ("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.12.3")
     testImplementation ("org.junit.jupiter:junit-jupiter:5.13.4")
+    implementation ("com.example:jsonparserwithcomments:1.0.0")
     //implementation(kotlin("stdlib-jdk8"))
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.5.31")
 }
