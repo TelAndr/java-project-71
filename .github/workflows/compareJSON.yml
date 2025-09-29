@@ -1,5 +1,0 @@
-test_case_1:
-  description: "Сравнение идентичных JSON"
-  input_file_1: "path/to/file1.json"
-  input_file_2: "path/to/file2.json"
-  expected_result: "identical"
