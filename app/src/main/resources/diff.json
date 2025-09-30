@@ -4,9 +4,11 @@
     "oldValue": "value2",
     "newValue": "modifiedValue2"
   },
-  "key3.nestedKey2": {
-    "status": "removed",
-    "oldValue": "nestedValue2"
+  "key3": {
+	"nestedKey2": {
+		"status": "removed",
+		"oldValue": "nestedValue2"
+	}
   },
   "key4": {
     "status": "added",
