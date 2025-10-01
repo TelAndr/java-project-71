@@ -1,5 +1,7 @@
 package hexlet.code;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Map;
 import static hexlet.code.Formatter.getFormatter;
 import static hexlet.code.JsonDiff.findDifferentsMap;
@@ -24,11 +26,13 @@ public class Differ {
     }
     public static String generate(String filePath1, String filePath2, String formatName) throws Exception {
         // 1. Чтение файлов и определение формата
+        String fileContent1 = Files.readString(Path.of(filePath1));
+        String fileContent2 = Files.readString(Path.of(filePath2));
         String strFileType1 = getDataFormat(filePath1); //determineFileType(filePath1);
         String strFileType2 = getDataFormat(filePath2); //determineFileType(filePath2);
         // 2. Парсинг данных
-        Map<String, Object> mapFile1Data = Parser.parse(filePath1, strFileType1);
-        Map<String, Object> mapFile2Data = Parser.parse(filePath2, strFileType2);
+        Map<String, Object> mapFile1Data = Parser.parse(fileContent1, strFileType1);
+        Map<String, Object> mapFile2Data = Parser.parse(fileContent2, strFileType2);
         // 3. Построение разницы
         Map<String, Status> resultDiffMap = findDifferentsMap(mapFile1Data, mapFile2Data);
         // 4. Форматирование данных
