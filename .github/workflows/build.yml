@@ -10,10 +10,10 @@ jobs:
     name: Build and analyze
     runs-on: ubuntu-latest
     steps:
-      - name: Set execute permission
-        run: chmod +x ./app/gradlew
       - name: Checkout repository  
         uses: actions/checkout@v4
+      - name: Set execute permission
+        run: chmod +x ./app/gradlew
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       - name: Set up JDK 17
