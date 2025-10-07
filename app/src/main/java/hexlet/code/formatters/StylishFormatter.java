@@ -37,6 +37,9 @@ public class StylishFormatter implements Format {
                 case "added":
                     resStrBuilder.append("  + ").append(key).append(": ")
                             .append(objStatusVal.getNewValue()).append("\n");
+                case "unchanged":
+                    resStrBuilder.append("    ").append(key).append(": ")
+                            .append(objStatusVal.getNewValue()).append("\n");
                 default:
                     resStrBuilder.append("Not set status value. Can not create Property!");
             }
