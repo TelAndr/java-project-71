@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
 public class JsonDiff {
@@ -23,7 +24,8 @@ public class JsonDiff {
         //Set<String> filteredKeysJson2;
 
         for (String curKeyMap : mapJson1.keySet()) {
-            if (!mapJson2.containsKey(curKeyMap) || !mapJson1.get(curKeyMap).equals(mapJson2.get(curKeyMap))) {
+            //if (!mapJson2.containsKey(curKeyMap) || !mapJson1.get(curKeyMap).equals(mapJson2.get(curKeyMap))) {
+            if (!mapJson2.containsKey(curKeyMap) || !Objects.equals(mapJson1.get(curKeyMap), mapJson2.get(curKeyMap))) {
                 diffMap.put(curKeyMap, mapJson1.get(curKeyMap));
             }
         }
@@ -33,7 +35,8 @@ public class JsonDiff {
                 Status objStatus = new Status(Status.DELETED, mapJson1.get(curKeyMap), "");
                 diffMapStatus.put(curKeyMap, objStatus);
             }
-            if (!mapJson1.get(curKeyMap).equals(mapJson2.get(curKeyMap))) {
+            //if (!mapJson1.get(curKeyMap).equals(mapJson2.get(curKeyMap))) {
+            if (!Objects.equals(mapJson1.get(curKeyMap), mapJson2.get(curKeyMap))) {
                 Status objStatus = new Status(Status.CHANGED, mapJson1.get(curKeyMap), mapJson2.get(curKeyMap));
                 diffMapStatus.put(curKeyMap, objStatus);
             }
