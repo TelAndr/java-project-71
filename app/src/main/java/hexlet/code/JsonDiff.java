@@ -34,9 +34,7 @@ public class JsonDiff {
             if (!mapJson2.containsKey(curKeyMap)) {
                 Status objStatus = new Status(Status.DELETED, mapJson1.get(curKeyMap), "");
                 diffMapStatus.put(curKeyMap, objStatus);
-            }
-            //if (!mapJson1.get(curKeyMap).equals(mapJson2.get(curKeyMap))) {
-            if (!Objects.equals(mapJson1.get(curKeyMap), mapJson2.get(curKeyMap))) {
+            } else if (!Objects.equals(mapJson1.get(curKeyMap), mapJson2.get(curKeyMap))) {
                 Status objStatus = new Status(Status.CHANGED, mapJson1.get(curKeyMap), mapJson2.get(curKeyMap));
                 diffMapStatus.put(curKeyMap, objStatus);
             } else {
