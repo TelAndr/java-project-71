@@ -4,6 +4,7 @@ plugins {
     id("application")
     id ("checkstyle")
     id("org.sonarqube") version "6.2.0.5505"
+    //id ("org.junit.platform.gradle.plugin") version "1.9.3"
     //kotlin("jvm") version "1.9.22"
 }
 
@@ -45,15 +46,21 @@ application {
     mainClass.set("hexlet.code.App")
 }
 
+//dependencyManagement {
+//    imports {
+//        mavenBom ("org.junit:junit-bom:5.9.3")
+//    }
+//}
+
 dependencies {
     implementation("org.projectlombok:lombok:1.18.26")
     implementation("org.testng:testng:7.1.0")
     testImplementation(platform("org.junit:junit-bom:5.9.1"))
-    //testImplementation("org.junit.jupiter:junit-jupiter")
+    testImplementation("org.junit.jupiter:junit-jupiter")
     implementation ("info.picocli:picocli:4.7.7")
     implementation ("com.fasterxml.jackson.core:jackson-databind:2.13.1")
     implementation ("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.12.3")
-    testImplementation ("org.junit.jupiter:junit-jupiter:5.13.4")
+    //testImplementation ("org.junit.jupiter:junit-jupiter:5.13.4")
     //implementation ("com.example:jsonparserwithcomments:1.0.0")
     //implementation(kotlin("stdlib-jdk8"))
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.5.31")
