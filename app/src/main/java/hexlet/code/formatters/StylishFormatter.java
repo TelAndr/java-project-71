@@ -41,7 +41,8 @@ public class StylishFormatter implements Format {
                     resStrBuilder.append("    ").append(key).append(": ")
                             .append(objStatusVal.getNewValue()).append("\n");
                 default:
-                    throw new Error("Unknown order state: '${order.state}'!");
+                    //throw new Error("Unknown order state: '${order.state}'!");
+                    throw new RuntimeException("Unknown input: " + objStatusVal.getStatusName());
                     //resStrBuilder.append("Not set status value. Can not create Property!");
             }
         }
