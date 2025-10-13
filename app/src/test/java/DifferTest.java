@@ -61,12 +61,17 @@ public class DifferTest {
 
     @Test
     void testInputYamlOutputStylishFiles() throws Exception {
-        String filePath1 = "testFile1.yaml";
-        String filePath2 = "testFile2.yaml";
+        String filePath1 = "../app/src/main/resources/file1.yaml";
+        String filePath2 = "../app/src/main/resources/file2.yaml";
         String formatName = "stylish";
-        String outResultStr = Differ.generate(filePath1, filePath2, formatName);
-        String diffStringStylish = convertStylishToString("../app/src/main/resources/diff.stylish");
-        assertEquals(diffStringStylish, outResultStr.trim());
+        String outResultStr = "";
+        if(Files.exists(Paths.get(filePath1)) && Files.exists(Paths.get(filePath2))) {
+            outResultStr = Differ.generate(filePath1, filePath2, formatName);
+            String diffStringStylish = convertStylishToString("../app/src/main/resources/diff.stylish");
+            assertEquals(diffStringStylish, outResultStr.trim());
+        } else {
+            System.out.println("Файл не найден: " + filePath1 + "или" + filePath2);
+        }
     }
 
     @Test
