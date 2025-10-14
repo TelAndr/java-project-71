@@ -65,7 +65,7 @@ public class DifferTest {
         String filePath2 = "../app/src/main/resources/file2.yaml";
         String formatName = "stylish";
         String outResultStr = "";
-        if(Files.exists(Paths.get(filePath1)) && Files.exists(Paths.get(filePath2))) {
+        if (Files.exists(Paths.get(filePath1)) && Files.exists(Paths.get(filePath2))) {
             outResultStr = Differ.generate(filePath1, filePath2, formatName);
             String diffStringStylish = convertStylishToString("../app/src/main/resources/diff.stylish");
             assertEquals(diffStringStylish, outResultStr.trim());
