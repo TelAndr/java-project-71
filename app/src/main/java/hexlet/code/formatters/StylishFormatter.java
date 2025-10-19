@@ -37,9 +37,11 @@ public class StylishFormatter implements Format {
                 case "added":
                     resStrBuilder.append("  + ").append(key).append(": ")
                             .append(objStatusVal.getNewValue()).append("\n");
+                    break;
                 case "unchanged":
                     resStrBuilder.append("    ").append(key).append(": ")
                             .append(objStatusVal.getNewValue()).append("\n");
+                    break;
                 default:
                     //throw new Error("Unknown order state: '${order.state}'!");
                     throw new RuntimeException("Unknown input: " + objStatusVal.getStatusName());
