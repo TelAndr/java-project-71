@@ -4,7 +4,11 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
+
+import java.io.PrintStream;
+import java.io.UnsupportedEncodingException;
 
 import static org.testng.Assert.assertEquals;
 
@@ -61,16 +65,32 @@ public class DifferTest {
 
     @Test
     void testInputYamlOutputStylishFiles() throws Exception {
-        String filePath1 = "../app/src/main/resources/file1.yaml";
-        String filePath2 = "../app/src/main/resources/file2.yaml";
+        PrintStream ps = new PrintStream(System.out, true, "UTF-8");
+        String filePath1 = "src/main/resources/file1.yml";
+        String filePath2 = "src/main/resources/file2.yml";
         String formatName = "stylish";
         String outResultStr = "";
-        if (Files.exists(Paths.get(filePath1)) && Files.exists(Paths.get(filePath2))) {
+        Path path1 = Paths.get(filePath1);
+        Path path2 = Paths.get(filePath2);
+        System.out.println("Текущая директория: " + System.getProperty("user.dir"));
+        //Files.readString(Path.of("src/main/resources/file1.json"));
+        if (Files.exists(path1) && Files.exists(path2)) {
             outResultStr = Differ.generate(filePath1, filePath2, formatName);
             String diffStringStylish = convertStylishToString("../app/src/main/resources/diff.stylish");
             assertEquals(diffStringStylish, outResultStr.trim());
         } else {
             System.out.println("Файл не найден: " + filePath1 + "или" + filePath2);
+            if (!Files.exists(path1)) {
+                ps.println("Файл не найден: " + filePath1);
+                System.out.println("Абсолютный путь: " + path1.toAbsolutePath());
+                System.out.println("Директория существует: " + Files.exists(path1.getParent()));
+            }
+
+            if (!Files.exists(path2)) {
+                System.out.println("Файл не найден: " + filePath2);
+                System.out.println("Абсолютный путь: " + path2.toAbsolutePath());
+                System.out.println("Директория существует: " + Files.exists(path2.getParent()));
+            }
         }
     }
 
