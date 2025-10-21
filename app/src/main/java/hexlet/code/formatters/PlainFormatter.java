@@ -37,9 +37,7 @@ public class PlainFormatter implements Format {
                             .append(printValue(objStatusVal.getNewValue())).append("\n");
                     break;
                 case "unchanged":
-                    resStrBuilder.append("Property '").append(key).append("' was unchanged. From ")
-                            .append(printValue(objStatusVal.getOldValue())).append(" to ")
-                            .append(printValue(objStatusVal.getNewValue())).append("\n");
+                    
                     break;
                 default:
                     throw new RuntimeException("Unknown input: " + objStatusVal.getStatusName());
