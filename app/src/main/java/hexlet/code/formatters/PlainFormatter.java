@@ -36,6 +36,11 @@ public class PlainFormatter implements Format {
                     resStrBuilder.append("Property '").append(key).append("' was added with value: ")
                             .append(printValue(objStatusVal.getNewValue())).append("\n");
                     break;
+                case "unchanged":
+                    resStrBuilder.append("Property '").append(key).append("' was unchanged. From ")
+                            .append(printValue(objStatusVal.getOldValue())).append(" to ")
+                            .append(printValue(objStatusVal.getNewValue())).append("\n");
+                    break;
                 default:
                     throw new RuntimeException("Unknown input: " + objStatusVal.getStatusName());
                     //resStrBuilder.append("Not set status value. Can not create Property!");
