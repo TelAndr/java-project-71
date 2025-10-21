@@ -37,7 +37,8 @@ public class PlainFormatter implements Format {
                             .append(printValue(objStatusVal.getNewValue())).append("\n");
                     break;
                 default:
-                    resStrBuilder.append("Not set status value. Can not create Property!");
+                    throw new RuntimeException("Unknown input: " + objStatusVal.getStatusName());
+                    //resStrBuilder.append("Not set status value. Can not create Property!");
             }
         }
         return resStrBuilder.toString().trim();
