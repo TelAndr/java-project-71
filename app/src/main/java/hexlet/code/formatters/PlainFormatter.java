@@ -37,7 +37,7 @@ public class PlainFormatter implements Format {
                             .append(printValue(objStatusVal.getNewValue())).append("\n");
                     break;
                 case "unchanged":
-                    
+
                     break;
                 default:
                     throw new RuntimeException("Unknown input: " + objStatusVal.getStatusName());
