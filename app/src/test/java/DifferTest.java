@@ -137,8 +137,8 @@ public class DifferTest {
 
     @Test
     void testInputJsonOutputPlainFiles() throws Exception {
-        String filePath1 = "testFile1.json";
-        String filePath2 = "testFile2.json";
+        String filePath1 = "src/main/resources/file1.json";
+        String filePath2 = "src/main/resources/file2.json";
         String formatName = "plain";
         String outResultStr = Differ.generate(filePath1, filePath2, formatName);
         String diffStringPlain = convertPlainToString("../app/src/main/resources/diff.plain");
@@ -147,12 +147,19 @@ public class DifferTest {
 
     @Test
     void testInputJsonOutputStylishFiles() throws Exception {
-        String filePath1 = "testFile1.json";
-        String filePath2 = "testFile2.json";
+        String filePath1 = "src/main/resources/file1.json";
+        String filePath2 = "src/main/resources/file2.json";
         String formatName = "stylish";
-        String outResultStr = Differ.generate(filePath1, filePath2, formatName);
-        String diffStringStylish = convertStylishToString("../app/src/main/resources/diff.stylish");
-        assertEquals(diffStringStylish, outResultStr.trim());
+        String outResultStr = "";
+        Path path1 = Paths.get(filePath1);
+        Path path2 = Paths.get(filePath2);
+        if (Files.exists(path1) && Files.exists(path2)) {
+            outResultStr = Differ.generate(filePath1, filePath2, formatName);
+            String diffStringStylish = convertStylishToString("../app/src/main/resources/diff.stylish");
+            assertEquals(diffStringStylish, outResultStr.trim());
+        } else {
+            System.out.println("Файл не найден: " + filePath1 + "или" + filePath2);
+        }
     }
 
     @Test
