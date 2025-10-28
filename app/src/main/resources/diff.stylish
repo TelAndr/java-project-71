@@ -1,4 +1,8 @@
+{
+    key1: value1
   - key2: value2
   + key2: modifiedValue2
-  - nestedKey2: nestedValue2
+  - key3: {nestedKey1: nestedValue1, nestedKey2: nestedValue2}
+  + key3: {nestedKey1: nestedValue1} 
   + key4: value4
+}
