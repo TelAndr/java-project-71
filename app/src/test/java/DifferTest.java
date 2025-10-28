@@ -156,6 +156,11 @@ public class DifferTest {
         if (Files.exists(path1) && Files.exists(path2)) {
             outResultStr = Differ.generate(filePath1, filePath2, formatName);
             String diffStringStylish = convertStylishToString("../app/src/main/resources/diff.stylish");
+            if (diffStringStylish.equalsIgnoreCase(outResultStr)) {
+                int a1 = 5;
+            } else {
+                int a2 = 6;
+            }
             assertEquals(diffStringStylish, outResultStr.trim());
         } else {
             System.out.println("Файл не найден: " + filePath1 + "или" + filePath2);
