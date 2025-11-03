@@ -43,6 +43,15 @@ public class DifferTest {
         }
         return stylishString;
     }
+    public static int findDifferenceIndex(String str1, String str2) {
+        int minLength = Math.min(str1.length(), str2.length());
+        for (int i = 0; i < minLength; i++) {
+            if (str1.charAt(i) != str2.charAt(i)) {
+                return i;
+            }
+        }
+        return minLength; // строки одинаковы до длины короткой строки
+    }
     @Test
     void testInputYamlOutputJsonFiles() throws Exception {
         String filePath1 = "src/main/resources/file1.yaml";
@@ -156,11 +165,13 @@ public class DifferTest {
         if (Files.exists(path1) && Files.exists(path2)) {
             outResultStr = Differ.generate(filePath1, filePath2, formatName);
             String diffStringStylish = convertStylishToString("../app/src/main/resources/diff.stylish");
-            if (diffStringStylish.equalsIgnoreCase(outResultStr)) {
+            String diffStringStylishWOr = diffStringStylish.replaceAll("\r", "");
+            if (diffStringStylishWOr.equalsIgnoreCase(outResultStr)) {
                 int a1 = 5;
             } else {
                 int a2 = 6;
             }
+            int firstPozDiff = findDifferenceIndex(diffStringStylishWOr, outResultStr);
             assertEquals(diffStringStylish, outResultStr.trim());
         } else {
             System.out.println("Файл не найден: " + filePath1 + "или" + filePath2);
