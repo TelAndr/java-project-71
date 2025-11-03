@@ -50,12 +50,12 @@ public class StylishFormatter implements Format {
             }
             int endPozStrBuild = resStrBuilder.length() - 1;
             int pozReplElem = resStrBuilder.indexOf("=");
-            while ((pozReplElem = resStrBuilder.indexOf(String.valueOf("="), pozReplElem)) != -1) {
-                if (pozReplElem >= 0) {
-                    resStrBuilder.replace(pozReplElem, pozReplElem + 1, chForRepl);
-                    pozReplElem++;
-                }
-            }
+            //while ((pozReplElem = resStrBuilder.indexOf(String.valueOf("="), pozReplElem)) != -1) {
+            //    if (pozReplElem >= 0) {
+            //        resStrBuilder.replace(pozReplElem, pozReplElem + 1, chForRepl);
+            //        pozReplElem++;
+            //    }
+            //}
         }
         resStrBuilder.append("}");
         return resStrBuilder.toString();
