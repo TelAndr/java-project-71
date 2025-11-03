@@ -16,6 +16,7 @@ public class StylishFormatter implements Format {
      */
     @Override
     public String format(Map<String, Status> resultDiffMap) {
+        final String chForRepl = ": ";
         StringBuilder resStrBuilder = new StringBuilder("{\n");
         Set<String> allDiffKeys = new TreeSet<>();
         allDiffKeys.addAll(resultDiffMap.keySet());
@@ -46,6 +47,14 @@ public class StylishFormatter implements Format {
                     //throw new Error("Unknown order state: '${order.state}'!");
                     throw new RuntimeException("Unknown input: " + objStatusVal.getStatusName());
                     //resStrBuilder.append("Not set status value. Can not create Property!");
+            }
+            int endPozStrBuild = resStrBuilder.length() - 1;
+            int pozReplElem = resStrBuilder.indexOf("=");
+            while ((pozReplElem = resStrBuilder.indexOf(String.valueOf("="), pozReplElem)) != -1) {
+                if (pozReplElem >= 0) {
+                    resStrBuilder.replace(pozReplElem, pozReplElem + 1, chForRepl);
+                    pozReplElem++;
+                }
             }
         }
         resStrBuilder.append("}");
