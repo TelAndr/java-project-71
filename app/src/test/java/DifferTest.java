@@ -172,7 +172,7 @@ public class DifferTest {
                 int a2 = 6;
             }
             int firstPozDiff = findDifferenceIndex(diffStringStylishWOr, outResultStr);
-            assertEquals(diffStringStylish, outResultStr.trim());
+            assertEquals(diffStringStylish.trim(), outResultStr.trim());
         } else {
             System.out.println("Файл не найден: " + filePath1 + "или" + filePath2);
         }
