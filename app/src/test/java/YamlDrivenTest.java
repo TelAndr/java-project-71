@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
 
-import static hexlet.code.JsonDiff.findDifferentsMap;
+import static hexlet.code.MapDiff.findDifferentsMap;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 public class YamlDrivenTest {
     static class TestCase {
