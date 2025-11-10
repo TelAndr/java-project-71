@@ -2,7 +2,7 @@ import hexlet.code.Status;
 import hexlet.code.formatters.JsonFormatter;
 import org.junit.jupiter.api.Test;
 import java.util.Map;
-import static hexlet.code.JsonDiff.findDifferentsMap;
+import static hexlet.code.MapDiff.findDifferentsMap;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 public class JsonFormatTest {
     private final JsonFormatter formatter = new JsonFormatter();
