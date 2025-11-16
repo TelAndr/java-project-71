@@ -5,16 +5,6 @@ import java.nio.file.Path;
 import java.util.Map;
 
 public class Differ {
-    public static String determineFileType(String filePath) {
-        if (filePath.endsWith(".json")) {
-            return "json";
-        } else if (filePath.endsWith(".yaml") || filePath.endsWith(".yml")) {
-            return "yaml";
-        } else {
-            return "unknown";
-        }
-    }
-
     // Формат данных берём на основе расширения файла, отрезая точку от строки.
     private static String getDataFormat(String filePath) {
         int index = filePath.lastIndexOf('.');
