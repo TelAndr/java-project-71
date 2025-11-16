@@ -17,10 +17,10 @@ public class PlainFormatter implements Format {
     @Override
     public String format(Map<String, Status> resultDiffMap) {
         StringBuilder resStrBuilder = new StringBuilder();
-        Set<String> allDiffKeys = new TreeSet<>();
-        allDiffKeys.addAll(resultDiffMap.keySet());
+        //Set<String> allDiffKeys = new TreeSet<>();
+        //allDiffKeys.addAll(resultDiffMap.keySet());
 
-        for (String key : allDiffKeys) {
+        for (String key : resultDiffMap.keySet()) {
             Status objStatusVal = resultDiffMap.get(key);
 
             switch (objStatusVal.getStatusName()) {
@@ -47,10 +47,10 @@ public class PlainFormatter implements Format {
         return resStrBuilder.toString().trim();
     }
     private static String printValue(Object objVal) {
-        if (objVal instanceof String) {
-            return "'" + objVal + "'";
-        } else if (objVal == null) {
+        if (objVal == null) {
             return "null";
+        } else if (objVal instanceof String) {
+            return "'" + objVal + "'";
         } else if (objVal instanceof Map || objVal instanceof Iterable) {
             return "[complex value]";
         } else {
