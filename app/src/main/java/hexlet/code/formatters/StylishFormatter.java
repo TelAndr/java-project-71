@@ -18,10 +18,10 @@ public class StylishFormatter implements Format {
     public String format(Map<String, Status> resultDiffMap) {
         final String chForRepl = ": ";
         StringBuilder resStrBuilder = new StringBuilder("{\n");
-        Set<String> allDiffKeys = new TreeSet<>();
-        allDiffKeys.addAll(resultDiffMap.keySet());
+        //Set<String> allDiffKeys = new TreeSet<>();
+        //allDiffKeys.addAll(resultDiffMap.keySet());
 
-        for (String key : allDiffKeys) {
+        for (String key : resultDiffMap.keySet()) {
             Status objStatusVal = resultDiffMap.get(key);
 
             switch (objStatusVal.getStatusName()) {
