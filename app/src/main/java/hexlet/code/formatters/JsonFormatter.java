@@ -24,12 +24,4 @@ public class JsonFormatter implements Format {
             throw new RuntimeException("Error while converting to JSON", e);
         }
     }
-    private String convertToJson(Map<String, Object> data) {
-        ObjectMapper objMapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
-        try {
-            return objMapper.writeValueAsString(data);
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException("Error while converting to JSON", e);
-        }
-    }
 }
