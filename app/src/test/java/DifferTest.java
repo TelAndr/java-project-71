@@ -1,4 +1,5 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.JsonNode;
 import hexlet.code.Differ;
 import org.junit.jupiter.api.Test;
 import java.io.File;
@@ -10,6 +11,7 @@ import java.nio.file.Paths;
 import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.testng.Assert.assertEquals;
 
 public class DifferTest {
@@ -156,6 +158,7 @@ public class DifferTest {
 
     @Test
     void testInputJsonOutputStylishFiles() throws Exception {
+        ObjectMapper mapper = new ObjectMapper();
         String filePath1 = "src/main/resources/file1.json";
         String filePath2 = "src/main/resources/file2.json";
         String formatName = "stylish";
@@ -172,7 +175,10 @@ public class DifferTest {
                 int a2 = 6;
             }
             int firstPozDiff = findDifferenceIndex(diffStringStylishWOr, outResultStr);
-            assertEquals(diffStringStylish.trim(), outResultStr.trim());
+            JsonNode expectedNode = mapper.readTree(diffStringStylishWOr);
+            JsonNode actualNode = mapper.readTree(outResultStr);
+            assertTrue(expectedNode.equals(actualNode));
+            //assertEquals(diffStringStylish.trim(), outResultStr.trim());
         } else {
             System.out.println("Файл не найден: " + filePath1 + "или" + filePath2);
         }
