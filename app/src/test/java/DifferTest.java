@@ -167,17 +167,18 @@ public class DifferTest {
         Path path2 = Paths.get(filePath2);
         if (Files.exists(path1) && Files.exists(path2)) {
             outResultStr = Differ.generate(filePath1, filePath2, formatName);
+            String outStr = outResultStr.trim();
+            JsonNode actualDiff = mapper.readTree(outStr);
             String diffStringStylish = convertStylishToString("../app/src/main/resources/diff.stylish");
             String diffStringStylishWOr = diffStringStylish.replaceAll("\r", "");
+            JsonNode expectedDiff = mapper.readTree(convertStylishToString("../app/src/main/resources/diff.stylish"));
             if (diffStringStylishWOr.equalsIgnoreCase(outResultStr)) {
                 int a1 = 5;
             } else {
                 int a2 = 6;
             }
             int firstPozDiff = findDifferenceIndex(diffStringStylishWOr, outResultStr);
-            JsonNode expectedNode = mapper.readTree(diffStringStylishWOr);
-            JsonNode actualNode = mapper.readTree(outResultStr);
-            assertTrue(expectedNode.equals(actualNode));
+            assertTrue(expectedDiff.equals(actualDiff));
             //assertEquals(diffStringStylish.trim(), outResultStr.trim());
         } else {
             System.out.println("Файл не найден: " + filePath1 + "или" + filePath2);
