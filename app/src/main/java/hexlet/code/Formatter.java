@@ -1,6 +1,7 @@
 package hexlet.code;
 import java.util.Map;
 
+import hexlet.code.formatters.JsonFormatter;
 import hexlet.code.formatters.StylishFormatter;
 import hexlet.code.formatters.PlainFormatter;
 public class Formatter {
@@ -20,6 +21,8 @@ public class Formatter {
     }
     public static Format getFormatter(String formatName) {
         switch (formatName.toLowerCase()) {
+            case "json":
+                return new JsonFormatter();
             case "plain":
                 return new PlainFormatter();
             case "stylish":
