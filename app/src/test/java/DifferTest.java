@@ -166,7 +166,7 @@ public class DifferTest {
         Path path1 = Paths.get(filePath1);
         Path path2 = Paths.get(filePath2);
         if (Files.exists(path1) && Files.exists(path2)) {
-            outResultStr = Differ.generate(filePath1, filePath2, "json"); // formatName
+            outResultStr = Differ.generate(filePath1, filePath2, formatName); 
             String outStr = outResultStr.trim();
             JsonNode actualDiff = mapper.readTree(outStr);
             String diffStringStylish = convertStylishToString("../app/src/main/resources/diff.stylish");
