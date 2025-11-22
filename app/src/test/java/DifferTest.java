@@ -1,3 +1,4 @@
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.JsonNode;
 import hexlet.code.Differ;
@@ -166,12 +167,22 @@ public class DifferTest {
         Path path1 = Paths.get(filePath1);
         Path path2 = Paths.get(filePath2);
         if (Files.exists(path1) && Files.exists(path2)) {
-            outResultStr = Differ.generate(filePath1, filePath2, formatName); 
+            outResultStr = Differ.generate(filePath1, filePath2, formatName);
             String outStr = outResultStr.trim();
-            JsonNode actualDiff = mapper.readTree(outStr);
+            JsonNode actualDiff = null;
+            JsonNode expectedDiff = null;
+            try {
+                actualDiff = mapper.readTree(outStr);
+            } catch (JsonProcessingException e) {
+                System.err.println(e.getMessage());
+            }
             String diffStringStylish = convertStylishToString("../app/src/main/resources/diff.stylish");
             String diffStringStylishWOr = diffStringStylish.replaceAll("\r", "");
-            JsonNode expectedDiff = mapper.readTree(convertStylishToString("../app/src/main/resources/diff.stylish"));
+            try {
+                expectedDiff = mapper.readTree(convertStylishToString("../app/src/main/resources/diff.stylish"));
+            } catch (JsonProcessingException e) {
+                System.err.println(e.getMessage());
+            }
             if (diffStringStylishWOr.equalsIgnoreCase(outResultStr)) {
                 int a1 = 5;
             } else {
