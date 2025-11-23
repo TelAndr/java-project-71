@@ -159,7 +159,7 @@ public class DifferTest {
 
     @Test
     void testInputJsonOutputStylishFiles() throws Exception {
-        ObjectMapper mapper = new ObjectMapper();
+        //ObjectMapper mapper = new ObjectMapper();
         String filePath1 = "src/main/resources/file1.json";
         String filePath2 = "src/main/resources/file2.json";
         String formatName = "stylish";
@@ -168,29 +168,33 @@ public class DifferTest {
         Path path2 = Paths.get(filePath2);
         if (Files.exists(path1) && Files.exists(path2)) {
             outResultStr = Differ.generate(filePath1, filePath2, formatName);
-            String outStr = outResultStr.trim();
-            JsonNode actualDiff = null;
-            JsonNode expectedDiff = null;
-            try {
-                actualDiff = mapper.readTree(outStr);
-            } catch (JsonProcessingException e) {
-                System.err.println(e.getMessage());
-            }
+            //String outStr = outResultStr.trim();
+            //JsonNode actualDiff = null;
+            //JsonNode expectedDiff = null;
+            //try {
+            //    actualDiff = mapper.readTree(outStr);
+            //} catch (JsonProcessingException e) {
+            //    System.err.println(e.getMessage());
+            //}
             String diffStringStylish = convertStylishToString("../app/src/main/resources/diff.stylish");
             String diffStringStylishWOr = diffStringStylish.replaceAll("\r", "");
-            try {
-                expectedDiff = mapper.readTree(convertStylishToString("../app/src/main/resources/diff.stylish"));
-            } catch (JsonProcessingException e) {
-                System.err.println(e.getMessage());
-            }
+            //try {
+            //    expectedDiff = mapper.readTree(convertStylishToString("../app/src/main/resources/diff.stylish"));
+            //} catch (JsonProcessingException e) {
+            //    System.err.println(e.getMessage());
+            //}
             if (diffStringStylishWOr.equalsIgnoreCase(outResultStr)) {
                 int a1 = 5;
             } else {
                 int a2 = 6;
             }
             int firstPozDiff = findDifferenceIndex(diffStringStylishWOr, outResultStr);
-            assertTrue(expectedDiff.equals(actualDiff));
+            //assertTrue(expectedDiff.equals(actualDiff));
             //assertEquals(diffStringStylish.trim(), outResultStr.trim());
+            assertEquals(
+                    Files.readString(Paths.get("../app/src/main/resources/diff.stylish")).trim(),
+                    outResultStr.trim()
+            );
         } else {
             System.out.println("Файл не найден: " + filePath1 + "или" + filePath2);
         }
