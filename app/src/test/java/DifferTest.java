@@ -164,6 +164,8 @@ public class DifferTest {
         String filePath2 = "src/main/resources/file2.json";
         String formatName = "stylish";
         String outResultStr = "";
+        String expected = "";
+        String actual = "";
         Path path1 = Paths.get(filePath1);
         Path path2 = Paths.get(filePath2);
         if (Files.exists(path1) && Files.exists(path2)) {
@@ -178,6 +180,12 @@ public class DifferTest {
             //}
             String diffStringStylish = convertStylishToString("../app/src/main/resources/diff.stylish");
             String diffStringStylishWOr = diffStringStylish.replaceAll("\r", "");
+            expected = Files.readString(Paths.get("../app/src/main/resources/diff.stylish")).trim()
+                    .replaceAll("\\r\\n", "\n")
+                    .replaceAll("\\r", "\n");
+            actual = outResultStr.trim()
+                    .replaceAll("\\r\\n", "\n")
+                    .replaceAll("\\r", "\n");
             //try {
             //    expectedDiff = mapper.readTree(convertStylishToString("../app/src/main/resources/diff.stylish"));
             //} catch (JsonProcessingException e) {
@@ -191,10 +199,11 @@ public class DifferTest {
             int firstPozDiff = findDifferenceIndex(diffStringStylishWOr, outResultStr);
             //assertTrue(expectedDiff.equals(actualDiff));
             //assertEquals(diffStringStylish.trim(), outResultStr.trim());
-            assertEquals(
-                    Files.readString(Paths.get("../app/src/main/resources/diff.stylish")).trim(),
-                    outResultStr.trim()
-            );
+            //assertEquals(
+            //        Files.readString(Paths.get("../app/src/main/resources/diff.stylish")).trim(),
+            //        outResultStr.trim()
+            //);
+            assertEquals(expected, actual);
         } else {
             System.out.println("Файл не найден: " + filePath1 + "или" + filePath2);
         }
