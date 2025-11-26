@@ -20,8 +20,9 @@ public class StylishFormatter implements Format {
         StringBuilder resStrBuilder = new StringBuilder("{\n");
         //Set<String> allDiffKeys = new TreeSet<>();
         //allDiffKeys.addAll(resultDiffMap.keySet());
+        Set<String> mapKeys = resultDiffMap.keySet();
 
-        for (String key : resultDiffMap.keySet()) {
+        for (String key : mapKeys) {
             Status objStatusVal = resultDiffMap.get(key);
 
             switch (objStatusVal.getStatusName()) {
