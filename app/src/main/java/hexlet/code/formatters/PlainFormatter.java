@@ -1,9 +1,6 @@
 package hexlet.code.formatters;
 
 import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
-
 import hexlet.code.Formatter.Format;
 import hexlet.code.Status;
 
@@ -17,8 +14,6 @@ public class PlainFormatter implements Format {
     @Override
     public String format(Map<String, Status> resultDiffMap) {
         StringBuilder resStrBuilder = new StringBuilder();
-        //Set<String> allDiffKeys = new TreeSet<>();
-        //allDiffKeys.addAll(resultDiffMap.keySet());
 
         for (String key : resultDiffMap.keySet()) {
             Status objStatusVal = resultDiffMap.get(key);
@@ -41,7 +36,6 @@ public class PlainFormatter implements Format {
                     break;
                 default:
                     throw new RuntimeException("Unknown input: " + objStatusVal.getStatusName());
-                    //resStrBuilder.append("Not set status value. Can not create Property!");
             }
         }
         return resStrBuilder.toString().trim();
