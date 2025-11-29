@@ -1,8 +1,6 @@
 package hexlet.code;
 
 import picocli.CommandLine;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.concurrent.Callable;
 
 //public class App {
@@ -48,9 +46,6 @@ public final class App implements Callable<Integer> {
         return 0;
     }
     public static void main(String[] args) throws Exception {
-        //System.out.printf("Hello World!");
-        //App objApp = new App();
-        //int returnValCall = objApp.call();
         int exitCode = new CommandLine(new App()).execute(args);
         System.exit(exitCode);
     }
