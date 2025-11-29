@@ -11,7 +11,7 @@ public class MapDiff {
         Set<String> keys = new TreeSet (Comparator.naturalOrder());
         keys.addAll(mapObj1.keySet());
         keys.addAll(mapObj2.keySet());
-        Map<String, Status> diffMapStatus = new HashMap<>();
+        Map<String, Status> diffMapStatus = new TreeMap<>();
         for (String curKeyMap : keys) {
             if (mapObj1.containsKey(curKeyMap) && !mapObj2.containsKey(curKeyMap)) {
                 Status objStatus = new Status(Status.DELETED, mapObj1.get(curKeyMap), "");
