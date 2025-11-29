@@ -1,14 +1,15 @@
 package hexlet.code;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.*;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.Comparator;
+import java.util.Objects;
 
 public class MapDiff {
     public static Map<String, Status> findDifferentsMap(Map<String, Object> mapObj1, Map<String, Object> mapObj2) {
-        Set<String> keys = new TreeSet (Comparator.naturalOrder());
+        Set<String> keys = new TreeSet(Comparator.naturalOrder());
         keys.addAll(mapObj1.keySet());
         keys.addAll(mapObj2.keySet());
         Map<String, Status> diffMapStatus = new TreeMap<>();
@@ -16,7 +17,8 @@ public class MapDiff {
             if (mapObj1.containsKey(curKeyMap) && !mapObj2.containsKey(curKeyMap)) {
                 Status objStatus = new Status(Status.DELETED, mapObj1.get(curKeyMap), "");
                 diffMapStatus.put(curKeyMap, objStatus);
-            } else if (mapObj1.containsKey(curKeyMap) && !Objects.equals(mapObj1.get(curKeyMap), mapObj2.get(curKeyMap))) {
+            } else if (mapObj1.containsKey(curKeyMap) &&
+                    !Objects.equals(mapObj1.get(curKeyMap), mapObj2.get(curKeyMap))) {
                 Status objStatus = new Status(Status.CHANGED, mapObj1.get(curKeyMap), mapObj2.get(curKeyMap));
                 diffMapStatus.put(curKeyMap, objStatus);
             } else {
