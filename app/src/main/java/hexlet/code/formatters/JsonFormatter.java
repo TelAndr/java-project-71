@@ -3,7 +3,6 @@ import java.util.Map;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
 import hexlet.code.Formatter.Format;
 import hexlet.code.Status;
 
@@ -15,7 +14,6 @@ public class JsonFormatter implements Format {
      * @return отформатированная строка.
      */
     @Override
-    //public String format(Map<String, Object> mapBefore, Map<String, Object> mapAfter) {
     public String format(Map<String, Status> resultDiffMap) {
         ObjectMapper mapper = new ObjectMapper();
         try {
