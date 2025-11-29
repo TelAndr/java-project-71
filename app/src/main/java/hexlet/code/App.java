@@ -48,9 +48,9 @@ public final class App implements Callable<Integer> {
         return 0;
     }
     public static void main(String[] args) throws Exception {
-        System.out.printf("Hello World!");
-        App objApp = new App();
-        int returnValCall = objApp.call();
+        //System.out.printf("Hello World!");
+        //App objApp = new App();
+        //int returnValCall = objApp.call();
         int exitCode = new CommandLine(new App()).execute(args);
         System.exit(exitCode);
     }
