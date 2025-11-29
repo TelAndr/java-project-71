@@ -1,6 +1,4 @@
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.JsonNode;
 import hexlet.code.Differ;
 import org.junit.jupiter.api.Test;
 import java.io.File;
@@ -8,11 +6,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
 import java.io.PrintStream;
-import java.io.UnsupportedEncodingException;
-
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.testng.Assert.assertEquals;
 
 public class DifferTest {
@@ -159,7 +153,6 @@ public class DifferTest {
 
     @Test
     void testInputJsonOutputStylishFiles() throws Exception {
-        //ObjectMapper mapper = new ObjectMapper();
         String filePath1 = "src/main/resources/file1.json";
         String filePath2 = "src/main/resources/file2.json";
         String formatName = "stylish";
@@ -170,39 +163,13 @@ public class DifferTest {
         Path path2 = Paths.get(filePath2);
         if (Files.exists(path1) && Files.exists(path2)) {
             outResultStr = Differ.generate(filePath1, filePath2, formatName);
-            //String outStr = outResultStr.trim();
-            //JsonNode actualDiff = null;
-            //JsonNode expectedDiff = null;
-            //try {
-            //    actualDiff = mapper.readTree(outStr);
-            //} catch (JsonProcessingException e) {
-            //    System.err.println(e.getMessage());
-            //}
             String diffStringStylish = convertStylishToString("../app/src/main/resources/diff.stylish");
-            String diffStringStylishWOr = diffStringStylish.replaceAll("\r", "");
             expected = Files.readString(Paths.get("../app/src/main/resources/diff.stylish")).trim()
                     .replaceAll("\\r\\n", "\n")
                     .replaceAll("\\r", "\n");
             actual = outResultStr.trim()
                     .replaceAll("\\r\\n", "\n")
                     .replaceAll("\\r", "\n");
-            //try {
-            //    expectedDiff = mapper.readTree(convertStylishToString("../app/src/main/resources/diff.stylish"));
-            //} catch (JsonProcessingException e) {
-            //    System.err.println(e.getMessage());
-            //}
-            if (diffStringStylishWOr.equalsIgnoreCase(outResultStr)) {
-                int a1 = 5;
-            } else {
-                int a2 = 6;
-            }
-            int firstPozDiff = findDifferenceIndex(diffStringStylishWOr, outResultStr);
-            //assertTrue(expectedDiff.equals(actualDiff));
-            //assertEquals(diffStringStylish.trim(), outResultStr.trim());
-            //assertEquals(
-            //        Files.readString(Paths.get("../app/src/main/resources/diff.stylish")).trim(),
-            //        outResultStr.trim()
-            //);
             assertEquals(expected, actual);
         } else {
             System.out.println("Файл не найден: " + filePath1 + "или" + filePath2);
