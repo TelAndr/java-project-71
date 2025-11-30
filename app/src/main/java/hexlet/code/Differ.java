@@ -23,8 +23,8 @@ public class Differ {
         Map<String, Object> mapFile1Data = Parser.parse(fileContent1, strFileType1);
         Map<String, Object> mapFile2Data = Parser.parse(fileContent2, strFileType2);
         // 3. Построение разницы
-        Map<String, Status> resultDiffMap = new TreeMap<>();
-        resultDiffMap = MapDiff.findDifferentsMap(mapFile1Data, mapFile2Data);
+        //Map<String, Status> resultDiffMap = new TreeMap<>();
+        Map<String, Status> resultDiffMap = MapDiff.findDifferentsMap(mapFile1Data, mapFile2Data);
         // 4. Форматирование данных
         Formatter.Format formatter = Formatter.getFormatter(formatName);
         return formatter.format(resultDiffMap);
