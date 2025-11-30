@@ -17,8 +17,8 @@ public class MapDiff {
             if (mapObj1.containsKey(curKeyMap) && !mapObj2.containsKey(curKeyMap)) {
                 Status objStatus = new Status(Status.DELETED, mapObj1.get(curKeyMap), "");
                 diffMapStatus.put(curKeyMap, objStatus);
-            } else if (mapObj1.containsKey(curKeyMap) &&
-                    !Objects.equals(mapObj1.get(curKeyMap), mapObj2.get(curKeyMap))) {
+            } else if (mapObj1.containsKey(curKeyMap)
+                    && !Objects.equals(mapObj1.get(curKeyMap), mapObj2.get(curKeyMap))) {
                 Status objStatus = new Status(Status.CHANGED, mapObj1.get(curKeyMap), mapObj2.get(curKeyMap));
                 diffMapStatus.put(curKeyMap, objStatus);
             } else {
