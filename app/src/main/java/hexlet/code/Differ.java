@@ -3,7 +3,7 @@ package hexlet.code;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Map;
-import java.util.TreeMap;
+//import java.util.TreeMap;
 
 public class Differ {
     // Формат данных берём на основе расширения файла, отрезая точку от строки.
