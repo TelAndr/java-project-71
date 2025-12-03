@@ -94,24 +94,24 @@ public class DifferTest {
         Path path2 = Paths.get(filePath2);
         System.out.println("Текущая директория: " + System.getProperty("user.dir"));
         //Files.readString(Path.of("src/main/resources/file1.json"));
-        if (Files.exists(path1) && Files.exists(path2)) {
+        //if (Files.exists(path1) && Files.exists(path2)) {
             outResultStr = Differ.generate(filePath1, filePath2, formatName);
             String diffStringStylish = convertStylishToString("../app/src/main/resources/diff.stylish");
             assertEquals(diffStringStylish, outResultStr.trim());
-        } else {
-            System.out.println("Файл не найден: " + filePath1 + "или" + filePath2);
-            if (!Files.exists(path1)) {
-                ps.println("Файл не найден: " + filePath1);
-                System.out.println("Абсолютный путь: " + path1.toAbsolutePath());
-                System.out.println("Директория существует: " + Files.exists(path1.getParent()));
-            }
+        //} else {
+        //    System.out.println("Файл не найден: " + filePath1 + "или" + filePath2);
+        //    if (!Files.exists(path1)) {
+        //        ps.println("Файл не найден: " + filePath1);
+        //        System.out.println("Абсолютный путь: " + path1.toAbsolutePath());
+        //        System.out.println("Директория существует: " + Files.exists(path1.getParent()));
+        //    }
 
-            if (!Files.exists(path2)) {
-                System.out.println("Файл не найден: " + filePath2);
-                System.out.println("Абсолютный путь: " + path2.toAbsolutePath());
-                System.out.println("Директория существует: " + Files.exists(path2.getParent()));
-            }
-        }
+        //    if (!Files.exists(path2)) {
+        //        System.out.println("Файл не найден: " + filePath2);
+        //        System.out.println("Абсолютный путь: " + path2.toAbsolutePath());
+        //        System.out.println("Директория существует: " + Files.exists(path2.getParent()));
+        //    }
+        //}
     }
 
     @Test
