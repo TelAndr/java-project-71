@@ -14,7 +14,7 @@ public class MapDiff {
         keys.addAll(mapObj2.keySet());
         Map<String, Status> diffMapStatus = new TreeMap<>();
         for (String curKeyMap : keys) {
-            if (mapObj1.containsKey(curKeyMap) && !mapObj2.containsKey(curKeyMap)) {
+            /*if (mapObj1.containsKey(curKeyMap) && !mapObj2.containsKey(curKeyMap)) {
                 Status objStatus = new Status(Status.DELETED, mapObj1.get(curKeyMap), "");
                 diffMapStatus.put(curKeyMap, objStatus);
             } else if (mapObj1.containsKey(curKeyMap)
@@ -28,6 +28,22 @@ public class MapDiff {
             if (!mapObj1.containsKey(curKeyMap) && mapObj2.containsKey(curKeyMap)) {
                 Status objStatus = new Status(Status.ADDED, "", mapObj2.get(curKeyMap));
                 diffMapStatus.put(curKeyMap, objStatus);
+            }*/
+
+            if (!mapObj1.containsKey(curKeyMap)) {
+                Status objStatus = new Status(Status.ADDED, "", mapObj2.get(curKeyMap));
+                diffMapStatus.put(curKeyMap, objStatus);
+            } else if (!mapObj2.containsKey(curKeyMap)) {
+                Status objStatus = new Status(Status.DELETED, mapObj1.get(curKeyMap), "");
+                diffMapStatus.put(curKeyMap, objStatus);
+            } else if (Objects.equals(mapObj1.get(curKeyMap), mapObj2.get(curKeyMap))) {
+                Status objStatus = new Status(Status.UNCHANGED, mapObj1.get(curKeyMap), mapObj2.get(curKeyMap));
+                diffMapStatus.put(curKeyMap, objStatus);
+            } else if (!Objects.equals(mapObj1.get(curKeyMap), mapObj2.get(curKeyMap))) {
+                Status objStatus = new Status(Status.CHANGED, mapObj1.get(curKeyMap), mapObj2.get(curKeyMap));
+                diffMapStatus.put(curKeyMap, objStatus);
+            } else {
+
             }
         }
         return diffMapStatus;
