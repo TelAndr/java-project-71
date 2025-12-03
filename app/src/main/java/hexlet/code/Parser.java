@@ -17,11 +17,11 @@ public class Parser {
     private static Map parseJson(String content) throws Exception  {
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(JsonParser.Feature.ALLOW_COMMENTS, true);
-        try {
+        //try {
             return mapper.readValue(content, Map.class);
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException("Error while converting to JSON", e);
-        }
+        //} catch (JsonProcessingException e) {
+        //    throw new RuntimeException("Error while converting to JSON", e);
+        //}
     }
 
     public static Map parse(String content, String dataFormat) throws Exception {
