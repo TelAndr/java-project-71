@@ -95,9 +95,9 @@ public class DifferTest {
         System.out.println("Текущая директория: " + System.getProperty("user.dir"));
         //Files.readString(Path.of("src/main/resources/file1.json"));
         //if (Files.exists(path1) && Files.exists(path2)) {
-            outResultStr = Differ.generate(filePath1, filePath2, formatName);
-            String diffStringStylish = convertStylishToString("../app/src/main/resources/diff.stylish");
-            assertEquals(diffStringStylish, outResultStr.trim());
+        outResultStr = Differ.generate(filePath1, filePath2, formatName);
+        String diffStringStylish = convertStylishToString("../app/src/main/resources/diff.stylish");
+        assertEquals(diffStringStylish, outResultStr.trim());
         //} else {
         //    System.out.println("Файл не найден: " + filePath1 + "или" + filePath2);
         //    if (!Files.exists(path1)) {
