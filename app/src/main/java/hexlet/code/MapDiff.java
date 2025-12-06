@@ -43,7 +43,7 @@ public class MapDiff {
                 Status objStatus = new Status(Status.CHANGED, mapObj1.get(curKeyMap), mapObj2.get(curKeyMap));
                 diffMapStatus.put(curKeyMap, objStatus);
             } else {
-
+                throw new RuntimeException("Unknown input: " + curKeyMap);
             }
         }
         return diffMapStatus;
