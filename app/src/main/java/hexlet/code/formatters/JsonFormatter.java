@@ -1,7 +1,5 @@
 package hexlet.code.formatters;
 import java.util.Map;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import hexlet.code.Formatter.Format;
 import hexlet.code.Status;
@@ -14,12 +12,8 @@ public class JsonFormatter implements Format {
      * @return отформатированная строка.
      */
     @Override
-    public String format(Map<String, Status> resultDiffMap) {
+    public String format(Map<String, Status> resultDiffMap) throws Exception {
         ObjectMapper mapper = new ObjectMapper();
-        try {
-            return mapper.writeValueAsString(resultDiffMap);
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException("Error while converting to JSON", e);
-        }
+        return mapper.writeValueAsString(resultDiffMap);
     }
 }
