@@ -12,7 +12,7 @@ public class PlainFormatter implements Format {
      * @return отформатированная строка.
      */
     @Override
-    public String format(Map<String, Status> resultDiffMap) {
+    public String format(Map<String, Status> resultDiffMap) throws Exception {
         StringBuilder resStrBuilder = new StringBuilder();
 
         for (String key : resultDiffMap.keySet()) {
