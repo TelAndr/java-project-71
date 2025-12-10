@@ -12,7 +12,7 @@ public class StylishFormatter implements Format {
      * @return отформатированная строка.
      */
     @Override
-    public String format(Map<String, Status> resultDiffMap) {
+    public String format(Map<String, Status> resultDiffMap) throws Exception {
         StringBuilder resStrBuilder = new StringBuilder("{\n");
 
         for (String key : resultDiffMap.keySet()) {
