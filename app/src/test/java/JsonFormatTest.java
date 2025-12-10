@@ -25,7 +25,7 @@ public class JsonFormatTest {
     //    assertFalse(areJsonValuesIdentical(json1, json2, "booleanKey"), "Булевы значения должны отличаться");
     //}
     @Test
-    public void testIdenticalJsonObjects() {
+    public void testIdenticalJsonObjects() throws Exception {
         Map<String, Object> mapJson1 = Map.of("key1", "value1", "key2", "value2");
         Map<String, Object> mapJson2 = Map.of("key1", "value1", "key2", "value2");
         Map<String, Status> resultDiffMap = findDifferentsMap(mapJson1, mapJson2);
@@ -33,7 +33,7 @@ public class JsonFormatTest {
         assertEquals("{}", strResult, "No difference should be found between identical JSON objects");
     }
     @Test
-    public void testWithDifferentKeys() {
+    public void testWithDifferentKeys() throws Exception {
         Map<String, Object> mapJson1 = Map.of("key1", "value1");
         Map<String, Object> mapJson2 = Map.of("key2", "value2");
 
@@ -43,7 +43,7 @@ public class JsonFormatTest {
         assertEquals(strExpected, strResult);
     }
     @Test
-    public void testWithChangedValues() {
+    public void testWithChangedValues() throws Exception {
         Map<String, Object> mapJson1 = Map.of("key1", "value1");
         Map<String, Object> mapJson2 = Map.of("key1", "newValue");
 
@@ -53,7 +53,7 @@ public class JsonFormatTest {
         assertEquals(strExpected, strResult);
     }
     @Test
-    public void testComplexStructures() {
+    public void testComplexStructures() throws Exception {
         Map<String, Object> mapJson1 = Map.of("key1", Map.of("subkey", "value1"), "key2", "value2");
         Map<String, Object> mapJson2 = Map.of("key1", Map.of("subkey", "value2"), "key2", "value2");
 
