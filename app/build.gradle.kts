@@ -4,17 +4,18 @@ plugins {
     id("application")
     id ("checkstyle")
     id("org.sonarqube") version "6.2.0.5505"
+    id("jacoco")
     //id ("org.junit.platform.gradle.plugin") version "1.9.3"
     //kotlin("jvm") version "1.9.22"
 }
 
-//sonar {
-//    properties {
-//        property("sonar.projectKey", "TelAndr_java-project-71")
-//        property("sonar.organization", "telandr1987")
-//        property("sonar.host.url", "https://sonarcloud.io")
-//    }
-//}
+sonar {
+    properties {
+        property("sonar.projectKey", "TelAndr_java-project-71")
+        property("sonar.organization", "telandr1987")
+        property("sonar.host.url", "https://sonarcloud.io")
+    }
+}
 
 sonarqube {
     properties {
