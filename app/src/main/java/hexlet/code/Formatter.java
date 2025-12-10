@@ -17,7 +17,7 @@ public class Formatter {
     }
 
     public interface Format {
-        String format(Map<String, Status> resultDiffMap);
+        String format(Map<String, Status> resultDiffMap) throws Exception;
     }
     public static Format getFormatter(String formatName) {
         switch (formatName.toLowerCase()) {
