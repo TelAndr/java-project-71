@@ -2,8 +2,9 @@
 run-dist: # запустить приложение
 	C:\java-project-71-main\app\build\install\app\bin\app
 make build:
-	./gradlew build --rerun-tasks
+	cd app && ./gradlew build --rerun-tasks
 report:
-    ./gradlew jacocoTestReport
+    @echo "Генерация отчета о покрытии тестами..."
+	cd app && ./gradlew jacocoTestReport
 	
 .PHONY: build
