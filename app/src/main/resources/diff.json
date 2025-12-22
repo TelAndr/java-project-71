@@ -1,17 +1,28 @@
 {
+  "key1": {
+    "statusName": "unchanged",
+    "oldValue": "value1",
+    "newValue": "value1"
+  },
   "key2": {
-    "status": "changed",
+    "statusName": "changed",
     "oldValue": "value2",
     "newValue": "modifiedValue2"
   },
   "key3": {
-	"nestedKey2": {
-		"status": "removed",
-		"oldValue": "nestedValue2"
+	"statusName": "changed",
+	"oldValue": {
+		"nestedKey1":"nestedValue1",
+		"nestedKey2":"nestedValue2"
+
+	},
+	"newValue": {
+		"nestedKey1":"nestedValue1"
 	}
   },
   "key4": {
-    "status": "added",
+    "statusName": "added",
+	"oldValue": "",
     "newValue": "value4"
   }
 }
