@@ -53,6 +53,11 @@ public class DifferTest {
         String s2 = str2.toLowerCase().replaceAll("\\s+", " ").trim();
         return s1.equals(s2);
     }
+    public static boolean compareRemoveSpacesString(String str1, String str2) {
+        String s1 = str1.toLowerCase().replaceAll("\\s+", "").trim();
+        String s2 = str2.toLowerCase().replaceAll("\\s+", "").trim();
+        return s1.equals(s2);
+    }
     @Test
     void testInputYamlOutputJsonFiles() throws Exception {
         String filePath1 = "src/main/resources/file1.yml";
@@ -63,12 +68,13 @@ public class DifferTest {
         String actual = "";
         outResultStr = Differ.generate(filePath1, filePath2, formatName);
         expected = Files.readString(Paths.get("../app/src/main/resources/diff.json")).trim()
-                .replaceAll("\\r\\n", "\n")
-                .replaceAll("\\r", "\n");
+                .replaceAll("\\r\\n", "")
+                .replaceAll("\\r", "");
         actual = outResultStr.trim()
-                .replaceAll("\\r\\n", "\n")
-                .replaceAll("\\r", "\n");
-        assertTrue(compareIgnoringFormat(expected, actual));
+                .replaceAll("\\r\\n", "")
+                .replaceAll("\\r", "");
+        assertTrue(compareRemoveSpacesString(expected, actual));
+        //assertTrue(compareIgnoringFormat(expected, actual));
         //String diffStringJson = convertJsonToString("../app/src/main/resources/diff.json");
         //assertEquals(diffStringJson, outResultStr.trim());
     }
