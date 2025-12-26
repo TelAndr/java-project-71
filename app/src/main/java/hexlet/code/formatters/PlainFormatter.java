@@ -40,13 +40,46 @@ public class PlainFormatter implements Format {
         }
         return resStrBuilder.toString().trim();
     }
+    //private static String printValue(Object objVal) {
+    //    if (objVal == null) {
+    //        return "null";
+    //    } else if (objVal instanceof String) {
+    //        return "'" + objVal + "'";
+    //    } else if (objVal instanceof Map || objVal instanceof Iterable) {
+    //        return "[complex value]";
+    //    } else {
+    //        return objVal.toString();
+    //    }
+    //}
     private static String printValue(Object objVal) {
         if (objVal == null) {
             return "null";
         } else if (objVal instanceof String) {
             return "'" + objVal + "'";
-        } else if (objVal instanceof Map || objVal instanceof Iterable) {
-            return "[complex value]";
+        } else if (objVal instanceof Map) {
+            // Преобразуем Map в строку вида {key1=value1, key2=value2}
+            Map<String, Status> map = (Map<String, Status>) objVal;
+            StringBuilder sb = new StringBuilder("'{");
+            boolean first = true;
+            for (var e : map.entrySet()) {
+                if (!first) sb.append(", ");
+                sb.append(e.getKey()).append("=").append(e.getValue());
+                first = false;
+            }
+            sb.append("}'");
+            return sb.toString();
+        } else if (objVal instanceof Iterable) {
+            // Обработка списков
+            Iterable<Status> iter = (Iterable<Status>) objVal;
+            StringBuilder sb = new StringBuilder("[");
+            boolean first = true;
+            for (var item : iter) {
+                if (!first) sb.append(", ");
+                sb.append(printValue(item));
+                first = false;
+            }
+            sb.append("]");
+            return sb.toString();
         } else {
             return objVal.toString();
         }
