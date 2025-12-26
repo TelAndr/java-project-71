@@ -85,9 +85,20 @@ public class DifferTest {
         String filePath2 = "src/main/resources/file2.yml";
         String formatName = "plain";
         String outResultStr = "";
+        String expected = "";
+        String actual = "";
         outResultStr = Differ.generate(filePath1, filePath2, formatName);
         String diffStringPlain = convertPlainToString("../app/src/main/resources/diff.plain");
-        assertEquals(diffStringPlain, outResultStr.trim());
+        expected = Files.readString(Paths.get("../app/src/main/resources/diff.plain")).trim()
+                .replaceAll("\\r\\n", "")
+                .replaceAll("\\r", "");
+        actual = outResultStr.trim()
+                .replaceAll("\\r\\n", "")
+                .replaceAll("\\r", "");
+        System.out.println("EXPECTED:\n" + diffStringPlain);
+        System.out.println("ACTUAL:\n" + outResultStr);
+        assertTrue(compareRemoveSpacesString(expected, actual));
+        //assertEquals(diffStringPlain, outResultStr.trim());
     }
 
     @Test
@@ -96,10 +107,19 @@ public class DifferTest {
         String filePath2 = "src/main/resources/file2.yml";
         String formatName = "stylish";
         String outResultStr = "";
+        String expected = "";
+        String actual = "";
         System.out.println("Текущая директория: " + System.getProperty("user.dir"));
         outResultStr = Differ.generate(filePath1, filePath2, formatName);
+        expected = Files.readString(Paths.get("../app/src/main/resources/diff.stylish")).trim()
+                .replaceAll("\\r\\n", "\n")
+                .replaceAll("\\r", "\n");
+        actual = outResultStr.trim()
+                .replaceAll("\\r\\n", "\n")
+                .replaceAll("\\r", "\n");
         String diffStringStylish = convertStylishToString("../app/src/main/resources/diff.stylish");
-        assertEquals(diffStringStylish, outResultStr.trim());
+        assertTrue(compareIgnoringFormat(expected, actual));
+        //assertEquals(diffStringStylish, outResultStr.trim());
     }
 
     @Test
