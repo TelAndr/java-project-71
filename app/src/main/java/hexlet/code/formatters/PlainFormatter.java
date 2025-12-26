@@ -62,7 +62,9 @@ public class PlainFormatter implements Format {
             StringBuilder sb = new StringBuilder("'{");
             boolean first = true;
             for (var e : map.entrySet()) {
-                if (!first) sb.append(", ");
+                if (!first) {
+                    sb.append(", ");
+                }
                 sb.append(e.getKey()).append("=").append(e.getValue());
                 first = false;
             }
@@ -74,7 +76,9 @@ public class PlainFormatter implements Format {
             StringBuilder sb = new StringBuilder("[");
             boolean first = true;
             for (var item : iter) {
-                if (!first) sb.append(", ");
+                if (!first) {
+                    sb.append(", ");
+                }
                 sb.append(printValue(item));
                 first = false;
             }
