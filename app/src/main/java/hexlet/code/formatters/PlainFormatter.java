@@ -3,6 +3,7 @@ package hexlet.code.formatters;
 import java.util.Map;
 import hexlet.code.Formatter.Format;
 import hexlet.code.Status;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class PlainFormatter implements Format {
     /**
@@ -52,13 +53,14 @@ public class PlainFormatter implements Format {
     //    }
     //}
     private static String printValue(Object objVal) {
+        ObjectMapper mapper = new ObjectMapper();
         if (objVal == null) {
             return "null";
         } else if (objVal instanceof String) {
             return "'" + objVal + "'";
         } else if (objVal instanceof Map) {
             // Преобразуем Map в строку вида {key1=value1, key2=value2}
-            Map<String, Status> map = (Map<String, Status>) objVal;
+            Map<String, Status> map = mapper.convertValue(objVal, Map.class); //(Map<String, Status>) objVal;
             StringBuilder sb = new StringBuilder("'{");
             boolean first = true;
             for (var e : map.entrySet()) {
@@ -72,7 +74,7 @@ public class PlainFormatter implements Format {
             return sb.toString();
         } else if (objVal instanceof Iterable) {
             // Обработка списков
-            Iterable<Status> iter = (Iterable<Status>) objVal;
+            Iterable<Status> iter = mapper.convertValue(objVal, Iterable.class); //(Iterable<Status>) objVal;
             StringBuilder sb = new StringBuilder("[");
             boolean first = true;
             for (var item : iter) {
