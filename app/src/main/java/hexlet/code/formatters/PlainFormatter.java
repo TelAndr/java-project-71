@@ -58,12 +58,14 @@ public class PlainFormatter implements Format {
             return "null";
         } else if (objVal instanceof String) {
             return "'" + objVal + "'";
+        } else if (objVal instanceof Status) {
+            return ((Status) objVal).getStatusName();
         } else if (objVal instanceof Map) {
             // Преобразуем Map в строку вида {key1=value1, key2=value2}
-            Map<String, Status> map = mapper.convertValue(objVal, Map.class); //(Map<String, Status>) objVal;
+            Map<String, Status> map = (Map<String, Status>) objVal; //mapper.convertValue(objVal, Map.class);
             StringBuilder sb = new StringBuilder("'{");
             boolean first = true;
-            for (var e : map.entrySet()) {
+            for (Map.Entry<String, Status> e : map.entrySet()) {
                 if (!first) {
                     sb.append(", ");
                 }
@@ -74,14 +76,18 @@ public class PlainFormatter implements Format {
             return sb.toString();
         } else if (objVal instanceof Iterable) {
             // Обработка списков
-            Iterable<Status> iter = mapper.convertValue(objVal, Iterable.class); //(Iterable<Status>) objVal;
+            Iterable<Status> iter = (Iterable<Status>) objVal; //mapper.convertValue(objVal, Iterable.class);
             StringBuilder sb = new StringBuilder("[");
             boolean first = true;
             for (Status item : iter) {
                 if (!first) {
                     sb.append(", ");
                 }
-                sb.append(item.getStatusName());
+                if (item instanceof Status) {
+                    sb.append(((Status) item).getStatusName());
+                } else {
+                    sb.append(item.toString());
+                }
                 first = false;
             }
             sb.append("]");
