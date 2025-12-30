@@ -81,7 +81,7 @@ public class PlainFormatter implements Format {
                 if (!first) {
                     sb.append(", ");
                 }
-                sb.append(printValue(item));
+                sb.append(item.getStatusName());
                 first = false;
             }
             sb.append("]");
