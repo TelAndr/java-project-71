@@ -77,7 +77,7 @@ public class PlainFormatter implements Format {
             Iterable<Status> iter = mapper.convertValue(objVal, Iterable.class); //(Iterable<Status>) objVal;
             StringBuilder sb = new StringBuilder("[");
             boolean first = true;
-            for (var item : iter) {
+            for (Status item : iter) {
                 if (!first) {
                     sb.append(", ");
                 }
