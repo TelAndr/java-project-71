@@ -74,7 +74,7 @@ public class PlainFormatter implements Format {
             }
             sb.append("}'");
             return sb.toString();
-        } else if (objVal instanceof Iterable) {
+        } /*else if (objVal instanceof Iterable) {
             // Обработка списков
             Iterable<Status> iter = (Iterable<Status>) objVal; //mapper.convertValue(objVal, Iterable.class);
             StringBuilder sb = new StringBuilder("[");
@@ -92,7 +92,7 @@ public class PlainFormatter implements Format {
             }
             sb.append("]");
             return sb.toString();
-        } else {
+        }*/ else {
             return objVal.toString();
         }
     }
