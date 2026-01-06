@@ -3,7 +3,7 @@ package hexlet.code.formatters;
 import java.util.Map;
 import hexlet.code.Formatter.Format;
 import hexlet.code.Status;
-import com.fasterxml.jackson.databind.ObjectMapper;
+//import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class PlainFormatter implements Format {
     /**
