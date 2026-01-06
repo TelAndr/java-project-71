@@ -15,8 +15,8 @@ public class JsonDataTypeTest {
         ObjectMapper objMapper = new ObjectMapper();
 
         // Подготовка JSON файлов с различными типами данных
-        Map<String, Object> mapJson1 = objMapper.readValue(new File("path/to/file1.json"), Map.class);
-        Map<String, Object> mapJson2 = objMapper.readValue(new File("path/to/file2.json"), Map.class);
+        Map<String, Object> mapJson1 = objMapper.readValue(new File("src/main/resources/file1.json"), Map.class);
+        Map<String, Object> mapJson2 = objMapper.readValue(new File("src/main/resources/file2.json"), Map.class);
 
         // Проверка как программа обрабатывает различные типы данных
         assertFalse(areJsonValuesIdentical(mapJson1, mapJson2, "stringKey"), "Строки должны отличаться");
