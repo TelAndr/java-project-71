@@ -41,18 +41,18 @@ public class PlainFormatter implements Format {
         }
         return resStrBuilder.toString().trim();
     }
-    //private static String printValue(Object objVal) {
-    //    if (objVal == null) {
-    //        return "null";
-    //    } else if (objVal instanceof String) {
-    //        return "'" + objVal + "'";
-    //    } else if (objVal instanceof Map || objVal instanceof Iterable) {
-    //        return "[complex value]";
-    //    } else {
-    //        return objVal.toString();
-    //    }
-    //}
     private static String printValue(Object objVal) {
+        if (objVal == null) {
+            return "null";
+        } else if (objVal instanceof String) {
+            return "'" + objVal + "'";
+        } else if (objVal instanceof Map) { //  || objVal instanceof Iterable
+            return "[complex value]";
+        } else {
+            return objVal.toString();
+        }
+    }
+    /*private static String printValue(Object objVal) {
         ObjectMapper mapper = new ObjectMapper();
         if (objVal == null) {
             return "null";
@@ -74,7 +74,7 @@ public class PlainFormatter implements Format {
             }
             sb.append("}'");
             return sb.toString();
-        } /*else if (objVal instanceof Iterable) {
+        } else if (objVal instanceof Iterable) {
             // Обработка списков
             Iterable<Status> iter = (Iterable<Status>) objVal; //mapper.convertValue(objVal, Iterable.class);
             StringBuilder sb = new StringBuilder("[");
@@ -92,8 +92,8 @@ public class PlainFormatter implements Format {
             }
             sb.append("]");
             return sb.toString();
-        }*/ else {
+        } else {
             return objVal.toString();
         }
-    }
+    } */
 }
