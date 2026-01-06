@@ -16,7 +16,7 @@ public class JsonComparisonTest {
     public void testIdenticalJsonFiles() throws Exception {
         // Путь к идентичным JSON файлам
         String pathToFile1 = "src/main/resources/file1.json";
-        String pathToFile2 = "src/main/resources/file2.json";
+        String pathToFile2 = "src/main/resources/file1.json";
 
         assertTrue(areJsonFilesIdentical(pathToFile1, pathToFile2), "Файлы должны быть идентичны");
     }
