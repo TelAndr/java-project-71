@@ -15,16 +15,16 @@ public class JsonComparisonTest {
     @Test
     public void testIdenticalJsonFiles() throws Exception {
         // Путь к идентичным JSON файлам
-        String pathToFile1 = "path/to/identical_file1.json";
-        String pathToFile2 = "path/to/identical_file2.json";
+        String pathToFile1 = "src/main/resources/file1.json";
+        String pathToFile2 = "src/main/resources/file2.json";
 
         assertTrue(areJsonFilesIdentical(pathToFile1, pathToFile2), "Файлы должны быть идентичны");
     }
     @Test
     public void testDifferentJsonFiles() throws Exception {
         // Путь к разным JSON файлам
-        String pathToFile1 = "path/to/identical_file1.json";
-        String pathToFile3 = "path/to/different_file.json";
+        String pathToFile1 = "src/main/resources/file1.json";
+        String pathToFile3 = "src/main/resources/file2.json";
 
         assertFalse(areJsonFilesIdentical(pathToFile1, pathToFile3), "Файлы не должны быть идентичны");
     }
