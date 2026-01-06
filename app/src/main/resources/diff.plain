@@ -1,3 +1,3 @@
 Property 'key2' was updated. From 'value2' to 'modifiedValue2'
-Property 'key3' was updated. From '{nestedKey1=nestedValue1, nestedKey2=nestedValue2}' to '{nestedKey1=nestedValue1}'
+Property 'key3' was updated. From [complex value] to [complex value]
 Property 'key4' was added with value: 'value4'
