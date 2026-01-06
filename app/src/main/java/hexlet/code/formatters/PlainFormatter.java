@@ -46,7 +46,7 @@ public class PlainFormatter implements Format {
             return "null";
         } else if (objVal instanceof String) {
             return "'" + objVal + "'";
-        } else if (objVal instanceof Map) { //  || objVal instanceof Iterable
+        } else if (objVal instanceof Map  || objVal instanceof Iterable) { //
             return "[complex value]";
         } else {
             return objVal.toString();
