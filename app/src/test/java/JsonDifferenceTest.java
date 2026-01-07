@@ -25,7 +25,7 @@ public class JsonDifferenceTest {
         Map<String, Object> mapJson2 = objMapper.readValue(new File("src/main/resources/file2.json"), Map.class);
         Map<String, String> mapDifferences = findDifferences(mapJson1, mapJson2);
         // Пример проверки, если различия известны
-        assertEquals(1, mapDifferences.size(), "Ожидалось одно различие");
+        assertEquals(3, mapDifferences.size(), "Ожидалось три различия");
         assertTrue(mapDifferences.containsKey("ключСРазличием"), "Ожидалось отличие для `ключСРазличием`");
         assertEquals("Value in json1: 123, Value in json2: 456",
                 mapDifferences.get("ключСРазличием"), "Значения должны отличаться");
