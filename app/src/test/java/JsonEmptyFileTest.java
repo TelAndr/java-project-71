@@ -1,8 +1,8 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
-import java.io.File;
+//import java.io.File;
 import java.util.Map;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+//import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import java.nio.file.Files;
@@ -55,7 +55,7 @@ public class JsonEmptyFileTest {
         ObjectMapper objMapper = new ObjectMapper();
 
         assertThrows(JsonMappingException.class, () -> {
-            objMapper.readValue(Files.newInputStream(Paths.get("path/to/empty_file.json")),
+            objMapper.readValue(Files.newInputStream(Paths.get("src/main/resources/file1.json")),
                     Map.class);
         }, "Пустой JSON файл должен вызвать исключение при считывании");
     }
