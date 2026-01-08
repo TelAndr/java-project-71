@@ -32,7 +32,8 @@ public class JsonFormatTest {
         Map<String, Object> mapJson2 = Map.of("key1", "value1", "key2", "value2");
         Map<String, Status> resultDiffMap = findDifferentsMap(mapJson1, mapJson2);
         String strResult = formatter.format(resultDiffMap);
-        assertTrue(strResult.contains("\"statusName\":\"unchanged\""), "No difference should be found between identical JSON objects");
+        assertTrue(strResult.contains("\"statusName\":\"unchanged\""),
+                "No difference should be found between identical JSON objects");
     }
     @Test
     public void testWithDifferentKeys() throws Exception {
@@ -64,9 +65,9 @@ public class JsonFormatTest {
         Map<String, Object> mapJson2 = Map.of("key1", Map.of("subkey", "value2"), "key2", "value2");
 
         String strExpected = "{ \"key1.subkey\": \"from value1 to value2\" }"; // Example structure
-        String pattern = "{\"key1\":{\"statusName\":\"changed\",\"oldValue\":{\"subkey\":\"value1\"}," +
-                "\"newValue\":{\"subkey\":\"value2\"}},\"key2\":{\"statusName\":\"unchanged\"," +
-                "\"oldValue\":\"value2\",\"newValue\":\"value2\"}}";
+        String pattern = "{\"key1\":{\"statusName\":\"changed\",\"oldValue\":{\"subkey\":\"value1\"},"
+                + "\"newValue\":{\"subkey\":\"value2\"}},\"key2\":{\"statusName\":\"unchanged\","
+                + "\"oldValue\":\"value2\",\"newValue\":\"value2\"}}";
         Map<String, Status> resultDiffMap = findDifferentsMap(mapJson1, mapJson2);
         String strResult = formatter.format(resultDiffMap);
         assertEquals(pattern, strResult);
