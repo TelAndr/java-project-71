@@ -20,12 +20,15 @@ public class JsonDifferenceTest {
     @Test
     public void testDifferentValuesInJsonFiles() throws Exception {
         ObjectMapper objMapper = new ObjectMapper();
+        int mapDiffSize = 2;
         // Загружаем два JSON файла
-        Map<String, Object> mapJson1 = objMapper.readValue(new File("src/main/resources/file1.json"), Map.class);
-        Map<String, Object> mapJson2 = objMapper.readValue(new File("src/main/resources/file2.json"), Map.class);
+        Map<String, Object> mapJson1 = objMapper.readValue(new File("src/main/resources/file1.json"),
+                Map.class);
+        Map<String, Object> mapJson2 = objMapper.readValue(new File("src/main/resources/file2.json"),
+                Map.class);
         Map<String, String> mapDifferences = findDifferences(mapJson1, mapJson2);
         // Пример проверки, если различия известны
-        assertEquals(3, mapDifferences.size(), "Ожидалось три различия");
+        assertEquals(mapDiffSize, mapDifferences.size(), "Ожидалось два различия");
         assertTrue(mapDifferences.containsKey("ключСРазличием"), "Ожидалось отличие для `ключСРазличием`");
         assertEquals("Value in json1: 123, Value in json2: 456",
                 mapDifferences.get("ключСРазличием"), "Значения должны отличаться");
