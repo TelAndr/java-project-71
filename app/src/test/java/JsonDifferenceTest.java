@@ -29,8 +29,8 @@ public class JsonDifferenceTest {
         Map<String, String> mapDifferences = findDifferences(mapJson1, mapJson2);
         // Пример проверки, если различия известны
         assertEquals(mapDiffSize, mapDifferences.size(), "Ожидалось два различия");
-        assertTrue(mapDifferences.containsKey("ключСРазличием"), "Ожидалось отличие для `ключСРазличием`");
-        assertEquals("Value in json1: 123, Value in json2: 456",
-                mapDifferences.get("ключСРазличием"), "Значения должны отличаться");
+        assertTrue(mapDifferences.containsKey("key2"), "Ожидалось отличие для `ключСРазличием`");
+        assertEquals("Value in json1: value2, Value in json2: modifiedValue2",
+                mapDifferences.get("key2"), "Значения должны отличаться");
     }
 }
