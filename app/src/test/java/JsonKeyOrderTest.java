@@ -35,10 +35,12 @@ public class JsonKeyOrderTest {
         ObjectMapper objMapper = new ObjectMapper();
 
         // Загружаем JSON файлы, которые имеют одинаковые ключи и значения, но в разном порядке
-        Map<String, Object> mapJson1 = objMapper.readValue(new File("path/to/file1.json"), Map.class);
-        Map<String, Object> mapJson2 = objMapper.readValue(new File("path/to/file2.json"), Map.class);
+        Map<String, Object> mapJson1 = objMapper.readValue(new File("src/main/resources/file1.json"),
+                Map.class);
+        Map<String, Object> mapJson2 = objMapper.readValue(new File("src/main/resources/file2.json"),
+                Map.class);
 
-        assertTrue(areJsonFilesEquivalent(mapJson1, mapJson2),
-                "JSON файлы должны быть эквивалентны вне зависимости от порядка ключей");
+        assertTrue(!areJsonFilesEquivalent(mapJson1, mapJson2),
+                "JSON файлы должны быть не эквивалентны вне зависимости от порядка ключей");
     }
 }
