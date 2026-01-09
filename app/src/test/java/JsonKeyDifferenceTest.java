@@ -21,20 +21,20 @@ public class JsonKeyDifferenceTest {
         ObjectMapper objMapper = new ObjectMapper();
 
         // Загружаем JSON файлы
-        Map<String, Object> mapJson1 = objMapper.readValue(new File("path/to/file1.json"), Map.class);
-        Map<String, Object> mapJson2 = objMapper.readValue(new File("path/to/file2.json"), Map.class);
+        Map<String, Object> mapJson1 = objMapper.readValue(new File("src/main/resources/file1.json"),
+                Map.class);
+        Map<String, Object> mapJson2 = objMapper.readValue(new File("src/main/resources/file2.json"),
+                Map.class);
 
         // Поиск дополнительных ключей в json1, которых нет в json2
         Set<String> extraKeysInJson1 = findExtraKeys(mapJson1, mapJson2);
         Set<String> extraKeysInJson2 = findExtraKeys(mapJson2, mapJson1);
 
         // Проверка наличия ожидаемых дополнительных ключей
-        assertEquals(1, extraKeysInJson1.size(), "Ожидался один дополнительный ключ в первом JSON");
-        assertTrue(extraKeysInJson1.contains("дополнительныйКлюч1"),
-                "Ожидался дополнительный ключ: `дополнительныйКлюч1`");
+        assertEquals(0, extraKeysInJson1.size(), "Не ожидалось дополнительных ключей в первом JSON");
 
         assertEquals(1, extraKeysInJson2.size(), "Ожидался один дополнительный ключ во втором JSON");
-        assertTrue(extraKeysInJson2.contains("дополнительныйКлюч2"),
-                "Ожидался дополнительный ключ: `дополнительныйКлюч2`");
+        assertTrue(extraKeysInJson2.contains("key4"),
+                "Ожидался дополнительный ключ: `key4`");
     }
 }
