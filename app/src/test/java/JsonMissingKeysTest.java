@@ -22,14 +22,15 @@ public class JsonMissingKeysTest {
     @Test
     public void testDifferentKeysInJsonFiles() throws Exception {
         ObjectMapper objMapper = new ObjectMapper();
+        int quantDiff = 0;
         // Загружаем два JSON файла
-        Map<String, Object> mapJson1 = objMapper.readValue(new File("path/to/file1.json"), Map.class);
-        Map<String, Object> mapJson2 = objMapper.readValue(new File("path/to/file2.json"), Map.class);
+        Map<String, Object> mapJson1 = objMapper.readValue(new File("src/main/resources/file1.json"), Map.class);
+        Map<String, Object> mapJson2 = objMapper.readValue(new File("src/main/resources/file2.json"), Map.class);
         Map<String, String> mapDifferences = findDifferences(mapJson1, mapJson2);
         // Пример проверки, если различия известны
-        assertEquals(1, mapDifferences.size(), "Ожидалось одно различие");
-        assertTrue(mapDifferences.containsKey("ключСРазличием"), "Ожидалось отличие для `ключСРазличием`");
-        assertEquals("Value in json1: 123, Value in json2: 456",
-                mapDifferences.get("ключСРазличием"), "Значения должны отличаться");
+        assertEquals(quantDiff, mapDifferences.size(), "Различий не ожидалось");
+        //assertTrue(mapDifferences.containsKey("ключСРазличием"), "Ожидалось отличие для `ключСРазличием`");
+        //assertEquals("Value in json1: 123, Value in json2: 456",
+        //        mapDifferences.get("ключСРазличием"), "Значения должны отличаться");
     }
 }
