@@ -1,8 +1,8 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
-//import java.io.File;
+import java.io.File;
 import java.util.Map;
-//import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 //import org.json.JSONObject;
 //import java.io.FileWriter;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -42,24 +42,26 @@ public class JsonEmptyFileTest {
 
     //    assertTrue(areJsonFilesIdentical(mapJson1, mapJson2), "Оба JSON файла пусты и должны считаться идентичными");
     //}
-    //@Test
-    //public void testOneJsonFileEmpty() throws Exception {
-    //    ObjectMapper objMapper = new ObjectMapper();
+    @Test
+    public void testOneJsonFileEmpty() throws Exception {
+        ObjectMapper objMapper = new ObjectMapper();
 
-    //    Map<String, Object> nonEmptyJson = objMapper.readValue(new File("src/main/resources/file1.json"),
-    //            Map.class);
-    //    Map<String, Object> emptyJson = objMapper.readValue(new File("src/main/resources/empty.json"),
-    //            Map.class);
+        Map<String, Object> nonEmptyJson = objMapper.readValue(new File("src/main/resources/file1.json"),
+                Map.class);
+        Map<String, Object> emptyJson = objMapper.readValue(new File("src/main/resources/empty.json"),
+                Map.class);
 
-    //    assertTrue(nonEmptyJson.isEmpty() || emptyJson.isEmpty(),
-    //            "Один из JSON файлов пуст и должен считаться не равным");
-    //}
+        boolean isEmptyFile1 = nonEmptyJson.isEmpty();
+        boolean isEmptyFile2 = emptyJson.isEmpty();
+        assertTrue(nonEmptyJson.isEmpty() || emptyJson.isEmpty(),
+                "Один из JSON файлов пуст и должен считаться не равным");
+    }
     @Test
     public void testEmptyFileReadException() {
         ObjectMapper objMapper = new ObjectMapper();
 
         assertThrows(JsonMappingException.class, () -> {
-            objMapper.readValue(Files.newInputStream(Paths.get("src/main/resources/emptyExcept.json")),
+            objMapper.readValue(Files.newInputStream(Paths.get("src/main/resources/emptyExceptMod.json")),
                     Map.class);
         }, "Пустой JSON файл должен вызвать исключение при считывании");
     }
