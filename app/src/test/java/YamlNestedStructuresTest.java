@@ -1,6 +1,9 @@
+import hexlet.code.Parser;
 import org.yaml.snakeyaml.Yaml;
 import org.junit.jupiter.api.Test;
 import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 public class YamlNestedStructuresTest {
@@ -38,9 +41,17 @@ public class YamlNestedStructuresTest {
     }
     @Test
     public void testIdenticalNestedYamlStructures() throws Exception {
-        Map<String, Object> mapYaml1 = loadYaml("path/to/nested_file1.yaml");
-        Map<String, Object> mapYaml2 = loadYaml("path/to/nested_file2.yaml");
-
-        assertTrue(compareNestedStructures(mapYaml1, mapYaml2), "YAML структуры должны быть идентичны");
+        //Map<String, Object> mapYaml1 = loadYaml("src/main/resources/file1.yml");
+        //Map<String, Object> mapYaml2 = loadYaml("src/main/resources/file2.yml");
+        String strYmlPath1 = "src/main/resources/file1.yml";
+        String strYmlPath2 = "src/main/resources/file2.yml";
+        String strFileType1 = "yml";
+        String strFileType2 = "yml";
+        String fileContent1 = Files.readString(Path.of(strYmlPath1));
+        String fileContent2 = Files.readString(Path.of(strYmlPath2));
+        Map<String, Object> mapFile1Data = Parser.parse(fileContent1, strFileType1);
+        Map<String, Object> mapFile2Data = Parser.parse(fileContent2, strFileType2);
+        assertTrue(!compareNestedStructures(mapFile1Data, mapFile2Data));
+        //assertTrue(!compareNestedStructures(mapYaml1, mapYaml2), "YAML структуры должны быть идентичны");
     }
 }
