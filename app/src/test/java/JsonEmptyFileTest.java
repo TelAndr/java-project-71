@@ -47,7 +47,7 @@ public class JsonEmptyFileTest {
     @Test
     public void testOneJsonFileEmpty() throws Exception {
         ObjectMapper objMapper = new ObjectMapper();
-        int indentFactor = 4;
+        final int INDENT_FACTOR = 4;
 
         // Создаем пустой JSON-объект
         JSONObject jsonObject = new JSONObject();
@@ -57,7 +57,7 @@ public class JsonEmptyFileTest {
 
         try (FileWriter file = new FileWriter(filePath)) {
             // Записываем JSON в файл
-            file.write(jsonObject.toString(indentFactor)); // 4 — отступ для форматирования
+            file.write(jsonObject.toString(INDENT_FACTOR)); // 4 — отступ для форматирования
             System.out.println("Пустой JSON-файл создан: " + filePath);
         } catch (IOException e) {
             e.printStackTrace();
