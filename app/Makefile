@@ -4,7 +4,7 @@ run-dist: # запустить приложение
 make build:
 	cd app && ./gradlew build --rerun-tasks
 report:
-    @echo "Генерация отчета о покрытии тестами..."
+	@echo "Генерация отчета о покрытии тестами..."
 	cd app && ./gradlew jacocoTestReport
 	
 .PHONY: build
