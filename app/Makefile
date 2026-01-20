@@ -5,6 +5,6 @@ make build:
 	cd app && ./gradlew build --rerun-tasks
 report:
 	@echo "Генерация отчета о покрытии тестами..."
-	cd app && ./gradlew jacocoTestReport
+	./gradlew jacocoTestReport
 	
 .PHONY: build
