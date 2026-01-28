@@ -9,12 +9,8 @@ public class Formatter {
      * Форматирует различия между двумя структурами данных.
      * Этот метод может быть переопределен в подклассах для изменения поведения.
      *
-     * @param resultDiffMap карта различий, которую нужно отформатировать.
      * @return отформатированная строка.
      */
-    public String format(Map<String, Status> resultDiffMap) {
-        return "default string";
-    }
 
     public interface Format {
         String format(Map<String, Status> resultDiffMap) throws Exception;
