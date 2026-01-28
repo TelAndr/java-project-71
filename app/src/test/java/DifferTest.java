@@ -62,16 +62,9 @@ public class DifferTest {
         String filePath1 = "src/main/resources/file1.yml";
         String filePath2 = "src/main/resources/file2.yml";
         String formatName = "json";
-        String outResultStr = "";
-        String expected = "";
-        String actual = "";
-        outResultStr = Differ.generate(filePath1, filePath2, formatName);
-        expected = Files.readString(Paths.get("../app/src/main/resources/diff.json")).trim()
-                .replaceAll("\\r\\n", "")
-                .replaceAll("\\r", "");
-        actual = outResultStr.trim()
-                .replaceAll("\\r\\n", "")
-                .replaceAll("\\r", "");
+        String outResultStr = Differ.generate(filePath1, filePath2, formatName);
+        String expected = Files.readString(Paths.get("../app/src/main/resources/diff.json")).trim();
+        String actual = outResultStr.trim();
         assertTrue(compareRemoveSpacesString(expected, actual));
         //assertTrue(compareIgnoringFormat(expected, actual));
         //String diffStringJson = convertJsonToString("../app/src/main/resources/diff.json");
@@ -83,17 +76,10 @@ public class DifferTest {
         String filePath1 = "src/main/resources/file1.yml";
         String filePath2 = "src/main/resources/file2.yml";
         String formatName = "plain";
-        String outResultStr = "";
-        String expected = "";
-        String actual = "";
-        outResultStr = Differ.generate(filePath1, filePath2, formatName);
+        String outResultStr = Differ.generate(filePath1, filePath2, formatName);
         String diffStringPlain = convertPlainToString("../app/src/main/resources/diff.plain");
-        expected = Files.readString(Paths.get("../app/src/main/resources/diff.plain")).trim()
-                .replaceAll("\\r\\n", "")
-                .replaceAll("\\r", "");
-        actual = outResultStr.trim()
-                .replaceAll("\\r\\n", "")
-                .replaceAll("\\r", "");
+        String expected = Files.readString(Paths.get("../app/src/main/resources/diff.plain")).trim();
+        String actual = outResultStr.trim();
         System.out.println("EXPECTED:\n" + diffStringPlain);
         System.out.println("ACTUAL:\n" + outResultStr);
         assertTrue(compareRemoveSpacesString(expected, actual));
@@ -105,17 +91,10 @@ public class DifferTest {
         String filePath1 = "src/main/resources/file1.yml";
         String filePath2 = "src/main/resources/file2.yml";
         String formatName = "stylish";
-        String outResultStr = "";
-        String expected = "";
-        String actual = "";
         System.out.println("Текущая директория: " + System.getProperty("user.dir"));
-        outResultStr = Differ.generate(filePath1, filePath2, formatName);
-        expected = Files.readString(Paths.get("../app/src/main/resources/diff.stylish")).trim()
-                .replaceAll("\\r\\n", "\n")
-                .replaceAll("\\r", "\n");
-        actual = outResultStr.trim()
-                .replaceAll("\\r\\n", "\n")
-                .replaceAll("\\r", "\n");
+        String outResultStr = Differ.generate(filePath1, filePath2, formatName);
+        String expected = Files.readString(Paths.get("../app/src/main/resources/diff.stylish")).trim();
+        String actual = outResultStr.trim();
         String diffStringStylish = convertStylishToString("../app/src/main/resources/diff.stylish");
         assertTrue(compareIgnoringFormat(expected, actual));
         //assertEquals(diffStringStylish, outResultStr.trim());
@@ -126,15 +105,9 @@ public class DifferTest {
         String filePath1 = "src/main/resources/file1.yml";
         String filePath2 = "src/main/resources/file2.yml";
         String formatName = "";
-        String expected = "";
-        String actual = "";
         String outResultStr = Differ.generate(filePath1, filePath2, formatName);
-        expected = Files.readString(Paths.get("../app/src/main/resources/diff.stylish")).trim()
-                .replaceAll("\\r\\n", "\n")
-                .replaceAll("\\r", "\n");
-        actual = outResultStr.trim()
-                .replaceAll("\\r\\n", "\n")
-                .replaceAll("\\r", "\n");
+        String expected = Files.readString(Paths.get("../app/src/main/resources/diff.stylish")).trim();
+        String actual = outResultStr.trim();
         String diffStringStylish = convertStylishToString("../app/src/main/resources/diff.stylish");
         assertTrue(compareIgnoringFormat(expected, actual));
         //assertEquals(diffStringStylish, outResultStr.trim());
@@ -145,16 +118,9 @@ public class DifferTest {
         String filePath1 = "src/main/resources/file1.json";
         String filePath2 = "src/main/resources/file2.json";
         String formatName = "json";
-        String outResultStr = "";
-        String expected = "";
-        String actual = "";
-        outResultStr = Differ.generate(filePath1, filePath2, formatName);
-        expected = Files.readString(Paths.get("../app/src/main/resources/diff.json")).trim()
-                .replaceAll("\\r\\n", "\n")
-                .replaceAll("\\r", "\n");
-        actual = outResultStr.trim()
-                .replaceAll("\\r\\n", "\n")
-                .replaceAll("\\r", "\n");
+        String outResultStr = Differ.generate(filePath1, filePath2, formatName);
+        String expected = Files.readString(Paths.get("../app/src/main/resources/diff.json")).trim();
+        String actual = outResultStr.trim();
         String diffStringJson = convertJsonToString("../app/src/main/resources/diff.json");
         assertTrue(compareRemoveSpacesString(expected, actual));
         //assertEquals(diffStringJson, outResultStr.trim());
@@ -165,15 +131,9 @@ public class DifferTest {
         String filePath1 = "src/main/resources/file1.json";
         String filePath2 = "src/main/resources/file2.json";
         String formatName = "plain";
-        String expected = "";
-        String actual = "";
         String outResultStr = Differ.generate(filePath1, filePath2, formatName);
-        expected = Files.readString(Paths.get("../app/src/main/resources/diff.plain")).trim()
-                .replaceAll("\\r\\n", "\n")
-                .replaceAll("\\r", "\n");
-        actual = outResultStr.trim()
-                .replaceAll("\\r\\n", "\n")
-                .replaceAll("\\r", "\n");
+        String expected = Files.readString(Paths.get("../app/src/main/resources/diff.plain")).trim();
+        String actual = outResultStr.trim();
         String diffStringPlain = convertPlainToString("../app/src/main/resources/diff.plain");
         assertTrue(compareIgnoringFormat(expected, actual));
         //assertEquals(diffStringPlain, outResultStr.trim());
@@ -184,16 +144,9 @@ public class DifferTest {
         String filePath1 = "src/main/resources/file1.json";
         String filePath2 = "src/main/resources/file2.json";
         String formatName = "stylish";
-        String outResultStr = "";
-        String expected = "";
-        String actual = "";
-        outResultStr = Differ.generate(filePath1, filePath2, formatName);
-        expected = Files.readString(Paths.get("../app/src/main/resources/diff.stylish")).trim()
-                .replaceAll("\\r\\n", "\n")
-                .replaceAll("\\r", "\n");
-        actual = outResultStr.trim()
-                .replaceAll("\\r\\n", "\n")
-                .replaceAll("\\r", "\n");
+        String outResultStr = Differ.generate(filePath1, filePath2, formatName);
+        String expected = Files.readString(Paths.get("../app/src/main/resources/diff.stylish")).trim();
+        String actual = outResultStr.trim();
         System.out.println("EXPECTED:\n" + expected);
         System.out.println("ACTUAL:\n" + actual);
         assertTrue(compareIgnoringFormat(expected, actual));
@@ -205,16 +158,9 @@ public class DifferTest {
         String filePath1 = "src/main/resources/file1.json";
         String filePath2 = "src/main/resources/file2.json";
         String formatName = "";
-        String outResultStr = "";
-        String expected = "";
-        String actual = "";
-        outResultStr = Differ.generate(filePath1, filePath2, formatName);
-        expected = Files.readString(Paths.get("../app/src/main/resources/diff.stylish")).trim()
-                .replaceAll("\\r\\n", "\n")
-                .replaceAll("\\r", "\n");
-        actual = outResultStr.trim()
-                .replaceAll("\\r\\n", "\n")
-                .replaceAll("\\r", "\n");
+        String outResultStr = Differ.generate(filePath1, filePath2, formatName);
+        String expected = Files.readString(Paths.get("../app/src/main/resources/diff.stylish")).trim();
+        String actual = outResultStr.trim();
         String diffStringStylish = convertStylishToString("../app/src/main/resources/diff.stylish");
         assertTrue(compareIgnoringFormat(expected, actual));
         //assertEquals(diffStringStylish, outResultStr.trim());
