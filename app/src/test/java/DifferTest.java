@@ -104,8 +104,7 @@ public class DifferTest {
     void testInputYamlOutputDefaultFiles() throws Exception {
         String filePath1 = "src/main/resources/file1.yml";
         String filePath2 = "src/main/resources/file2.yml";
-        String formatName = "";
-        String outResultStr = Differ.generate(filePath1, filePath2, formatName);
+        String outResultStr = Differ.generate(filePath1, filePath2);
         String expected = Files.readString(Paths.get("../app/src/main/resources/diff.stylish")).trim();
         String actual = outResultStr.trim();
         String diffStringStylish = convertStylishToString("../app/src/main/resources/diff.stylish");
@@ -157,8 +156,7 @@ public class DifferTest {
     void testInputJsonOutputDefaultFiles() throws Exception {
         String filePath1 = "src/main/resources/file1.json";
         String filePath2 = "src/main/resources/file2.json";
-        String formatName = "";
-        String outResultStr = Differ.generate(filePath1, filePath2, formatName);
+        String outResultStr = Differ.generate(filePath1, filePath2);
         String expected = Files.readString(Paths.get("../app/src/main/resources/diff.stylish")).trim();
         String actual = outResultStr.trim();
         String diffStringStylish = convertStylishToString("../app/src/main/resources/diff.stylish");
