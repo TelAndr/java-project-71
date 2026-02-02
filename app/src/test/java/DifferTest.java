@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import static org.testng.Assert.assertTrue;
 import static org.testng.Assert.assertEquals;
 
 public class DifferTest {
@@ -38,25 +37,6 @@ public class DifferTest {
             e.printStackTrace();
         }
         return stylishString;
-    }
-    public static int findDifferenceIndex(String str1, String str2) {
-        int minLength = Math.min(str1.length(), str2.length());
-        for (int i = 0; i < minLength; i++) {
-            if (str1.charAt(i) != str2.charAt(i)) {
-                return i;
-            }
-        }
-        return minLength; // строки одинаковы до длины короткой строки
-    }
-    public static boolean compareIgnoringFormat(String str1, String str2) {
-        String s1 = str1.toLowerCase().replaceAll("\\s+", " ").trim();
-        String s2 = str2.toLowerCase().replaceAll("\\s+", " ").trim();
-        return s1.equals(s2);
-    }
-    public static boolean compareRemoveSpacesString(String str1, String str2) {
-        String s1 = str1.toLowerCase().replaceAll("\\s+", "").trim();
-        String s2 = str2.toLowerCase().replaceAll("\\s+", "").trim();
-        return s1.equals(s2);
     }
     @Test
     void testInputYamlOutputJsonFiles() throws Exception {
